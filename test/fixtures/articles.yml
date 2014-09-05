@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  source: MyText
+  start_page: 1
+  finish_page: 1
+  link: MyText
+  year: 1
+
+two:
+  name: MyText
+  source: MyText
+  start_page: 1
+  finish_page: 1
+  link: MyText
+  year: 1

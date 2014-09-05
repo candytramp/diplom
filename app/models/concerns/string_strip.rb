@@ -4,10 +4,10 @@ module StringStrip
     before_validation :process_field_string
   end    
   def process_field_string
-    self.attributes.each do |attribute|
-       if attribute.is_a?(String)
-         attribute.strip!
-         attribute.gsub!(/\s*/,' ')
+    self.attributes.each do |name, value|
+       if value.kind_of?(String)
+         value.strip!
+         self[name] = value.gsub(/\s+/,' ')
        end
     end
   end
