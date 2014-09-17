@@ -11,20 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905123305) do
+ActiveRecord::Schema.define(version: 20140912134803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: true do |t|
-    t.text     "name",        null: false
+    t.text     "name",                  null: false
     t.text     "source"
-    t.integer  "start_page",  null: false
-    t.integer  "finish_page", null: false
+    t.integer  "start_page",            null: false
+    t.integer  "finish_page",           null: false
     t.text     "link"
-    t.integer  "year",        null: false
+    t.integer  "year",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   create_table "people", force: true do |t|
