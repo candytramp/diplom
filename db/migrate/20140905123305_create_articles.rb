@@ -19,7 +19,6 @@ def change
           CHECK (start_page > 0 AND finish_page > 0 AND year > 0);
         SQL
         execute <<-SQL1
-		 
           ALTER TABLE articles
 		  ADD CONSTRAINT year_max_value
 		  CHECK (year < CAST(EXTRACT(year from now()) as Integer));
@@ -27,7 +26,7 @@ def change
 	    SQL1
       end
       dir.down do
-		execute <<-SQL1
+		    execute <<-SQL1
           ALTER TABLE articles
           DROP CONSTRAINT year_max_value
         SQL1
