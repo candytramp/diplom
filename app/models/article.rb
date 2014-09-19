@@ -123,7 +123,8 @@ class Article < ActiveRecord::Base
 	validates :name, :start_page, :finish_page, :year, presence: true
 	validates :start_page, :finish_page, :year,
 	      numericality: { only_integer: true, greater_than: 0 }
-	validates :year, numericality: {less_than_or_equal_to: Date.today.year}     
+	validates :year, numericality: {less_than_or_equal_to: Date.today.year}    
+	private 
 	def copy_year
 		self.year=self.source[:year]
 	end
