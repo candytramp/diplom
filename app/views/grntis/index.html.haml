@@ -1,0 +1,21 @@
+%h1 Listing grntis
+
+%table
+  %tr
+    %th Grnti
+    %th Name
+    %th
+    %th
+    %th
+
+  - @grntis.each do |grnti|
+    %tr
+      %td= grnti.grnti
+      %td= grnti.name
+      %td= link_to 'Show', grnti
+      %td= link_to 'Edit', edit_grnti_path(grnti)
+      %td= link_to 'Destroy', grnti, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Grnti', new_grnti_path

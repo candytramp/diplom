@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :sources
+
+  resources :fields
+
+  resources :grntis
+
   resources :articles
 
   resources :people
