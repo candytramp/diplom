@@ -22,34 +22,37 @@ class SourceValidator < ActiveModel::Validator
     @checks = {
       name: [PresenceCheck.new],
       year: [PresenceCheck.new, YearCheck.new],
-      output: [PositiveCheck.new],
+      output: [PresenceCheck.new],
       is_russian: [BooleanCheck.new], 
       in_rinc: [BooleanCheck.new],
-	    type: []
+	   type: []
     }
   end
 
   def validate(record)
     result = ""
-    # проверка на nil
-   	if !record.source.has_key?(:type) 
-    	record.errors[:source] << "Type of document is not specified!"
-    else
-    	case record.source[:type]
-    	when 'magazine'
-			  result = validates_magazine(record.source) 
-    		if !result.blank?
-    			record.errors[:source] << "Incorrect attridbute value #{result}"	
-    		end	  		  
-    	when 'collected papers'
-			result = validates_papers(record.source) 
-    		if !result.blank?
-    			record.errors[:source] << "Incorrect attribute value #{result}"
-        end 	
-    	else
-    	  record.errors[:source] << 'Incorrect type value'	
-    	end	
-    end  
+	if record.source.present?
+	   	if !record.source.has_key?(:type) 
+			record.errors[:source] << "Type of document is not specified!"
+		else
+			case record.source[:type]
+			when 'magazine'
+				  result = validates_magazine(record.source) 
+				if !result.blank?
+					record.errors[:source] << "Incorrect attridbute value #{result}"	
+				end	  		  
+			when 'collected papers'
+				result = validates_papers(record.source) 
+				if !result.blank?
+					record.errors[:source] << "Incorrect attribute value #{result}"
+		    end 	
+			else
+			  record.errors[:source] << 'Incorrect type value'	
+			end	
+		end
+	else
+		record.errors[:source] << 'Missed source value!'			 
+	end 
   end
   
   private
@@ -69,6 +72,7 @@ class SourceValidator < ActiveModel::Validator
   		end
 		  @checks[key].each do |check| 
   		  return key unless check.check(value)
+
   		end
   	end
  	  return ''
@@ -100,9 +104,10 @@ class Article < ActiveRecord::Base
 	
 	validates_with SourceValidator
 	before_validation :copy_year
+	before_validation :convert_value_in_rinc_is_russian
 	
 	has_attached_file :document, styles: {thumbnail: "60x60#"}
-	validates_attachment :document, content_type: { content_type: "application/pdf" }
+	validates_attachment :document, content_type: { content_type: ['application/pdf', 'image/jpeg', 'image/tiff', 'image/bmp', 'image/png' ]}
 	
 	serialize :source
 	validates :name, presence: true
@@ -113,8 +118,29 @@ class Article < ActiveRecord::Base
 	private 
 	
 	def copy_year
-	  # Проверка на nil
-		self.year=self.source[:year]
+		if self.source.present?
+			self.year=self.source[:year]
+		else
+			self.errors[:source] << 'Missed source value!'		
+		end
 	end
+
+    def convert_value_in_rinc_is_russian
+		if self.source.present?
+            
+			if self.source[:in_rinc]!=false && !self.source[:in_rinc].nil?
+				self.source[:in_rinc] = true 
+            else
+				self.source[:in_rinc] = false
+			end
+			if self.source[:is_russian]!=false && !self.source[:is_russian].nil?
+            	self.source[:is_russian] = true 
+			else
+				self.source[:is_russian] = false
+			end
+		else
+			self.errors[:source] << 'Missed source value!'		
+		end
+    end
 end
  
