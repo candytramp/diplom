@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922135854) do
+ActiveRecord::Schema.define(version: 20140923103501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 20140922135854) do
     t.datetime "updated_at"
   end
 
+  create_table "nir_types", force: true do |t|
+    t.string   "name",       limit: 30, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", force: true do |t|
     t.string   "last_name",    limit: 64, null: false
     t.string   "first_name",   limit: 64, null: false
@@ -57,6 +63,12 @@ ActiveRecord::Schema.define(version: 20140922135854) do
 
   create_table "sources", force: true do |t|
     t.text     "funding_source", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "state_programs", force: true do |t|
+    t.text     "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

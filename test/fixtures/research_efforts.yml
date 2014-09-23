@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  state_program_id: 
+  start_date: 2014-09-23
+  finish_date: 2014-09-23
+  grnti_id: 
+  field_id: 
+  full_value: 9.99
+  year_value: MyText
+  state_reg_number: 1
+  nir_number: 1
+  inventory_number: 1
+  nir_type_id: 
+  source_id: 
+  scientific_school: MyText
+
+two:
+  name: MyText
+  state_program_id: 
+  start_date: 2014-09-23
+  finish_date: 2014-09-23
+  grnti_id: 
+  field_id: 
+  full_value: 9.99
+  year_value: MyText
+  state_reg_number: 1
+  nir_number: 1
+  inventory_number: 1
+  nir_type_id: 
+  source_id: 
+  scientific_school: MyText

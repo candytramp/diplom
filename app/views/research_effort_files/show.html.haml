@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @research_effort_file.description
+%p
+  %b Research effort:
+  = @research_effort_file.research_effort
+
+= link_to 'Edit', edit_research_effort_file_path(@research_effort_file)
+\|
+= link_to 'Back', research_effort_files_path

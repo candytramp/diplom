@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :research_effort_files
+
+  resources :research_efforts
+
+  resources :state_programs
+
+  resources :nir_types
+
   resources :sources
 
   resources :fields
