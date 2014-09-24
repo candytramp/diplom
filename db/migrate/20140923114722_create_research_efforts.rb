@@ -15,6 +15,7 @@ class CreateResearchEfforts < ActiveRecord::Migration
       t.references :nir_type, index: true, null: false
       t.references :source, index: true, null: false
       t.text :scientific_school, null: false
+			t.boolean :is_nir, null: false
 
       t.timestamps
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923103501) do
+ActiveRecord::Schema.define(version: 20140923133645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,45 @@ ActiveRecord::Schema.define(version: 20140923103501) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "research_effort_files", force: true do |t|
+    t.text     "description"
+    t.integer  "research_effort_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
+  end
+
+  add_index "research_effort_files", ["research_effort_id"], name: "index_research_effort_files_on_research_effort_id", using: :btree
+
+  create_table "research_efforts", force: true do |t|
+    t.text     "name",                                      null: false
+    t.integer  "state_program_id",                          null: false
+    t.date     "start_date",                                null: false
+    t.date     "finish_date",                               null: false
+    t.integer  "grnti_id",                                  null: false
+    t.integer  "field_id",                                  null: false
+    t.decimal  "full_value",        precision: 5, scale: 2
+    t.text     "year_value"
+    t.integer  "state_reg_number",                          null: false
+    t.integer  "nir_number",                                null: false
+    t.integer  "inventory_number",                          null: false
+    t.integer  "nir_type_id",                               null: false
+    t.integer  "source_id",                                 null: false
+    t.text     "scientific_school",                         null: false
+    t.boolean  "is_nir",                                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "research_efforts", ["field_id"], name: "index_research_efforts_on_field_id", using: :btree
+  add_index "research_efforts", ["grnti_id"], name: "index_research_efforts_on_grnti_id", using: :btree
+  add_index "research_efforts", ["nir_type_id"], name: "index_research_efforts_on_nir_type_id", using: :btree
+  add_index "research_efforts", ["source_id"], name: "index_research_efforts_on_source_id", using: :btree
+  add_index "research_efforts", ["state_program_id"], name: "index_research_efforts_on_state_program_id", using: :btree
 
   create_table "sources", force: true do |t|
     t.text     "funding_source", null: false
