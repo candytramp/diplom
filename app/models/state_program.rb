@@ -1,4 +1,4 @@
 class StateProgram < ActiveRecord::Base
-	validates :name, presence :true
-	has_many :research_efforts
+	validates :name, presence: true
+	has_many :research_efforts, dependent: :destroy
 end
