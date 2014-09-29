@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  grnti: MyString
+  id: 1
+  grnti: MyStrin
   name: MyText
 
-two:
-  grnti: MyString
-  name: MyText

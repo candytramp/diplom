@@ -4,12 +4,13 @@ class YearValueValidator < ActiveModel::Validator
 		if record.year_value.present?
 
 			record.year_value.each do |key, value|				
-				if key < record.start_date.year || key > record.finish_date.year
+				if key.to_i < record.start_date.year || key.to_i > record.finish_date.year
 					record.errors[:year_value] << 'Year value out of range!'
 				end
 				summary += value.to_f #check if value converts correctly
+				puts summary.to_s
 			end
-			record.errors[:year_value] << 'Total sum greater than full_value' if summary > full_value
+			record.errors[:year_value] << 'Total sum greater than full_value' if summary > record.full_value.to_f
 
 		else
 			record.errors[:year_value] << 'Year_value key is missing!'
