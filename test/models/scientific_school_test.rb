@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ResearchEffortTest < ActiveSupport::TestCase
+class ScientificSchoolTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

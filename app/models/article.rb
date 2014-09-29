@@ -105,9 +105,10 @@ class Article < ActiveRecord::Base
 	validates_with SourceValidator
 	before_validation :copy_year
 	before_validation :convert_value_in_rinc_is_russian
-	
-	has_attached_file :document, styles: {thumbnail: "60x60#"}
-	validates_attachment :document, content_type: { content_type: ['application/pdf', 'image/jpeg', 'image/tiff', 'image/bmp', 'image/png' ]}
+
+	has_many :documents, :as=> :owner
+	#has_attached_file :document, styles: {thumbnail: "60x60#"}
+	#validates_attachment :document, content_type: { content_type: ['application/pdf', 'image/jpeg', 'image/tiff', 'image/bmp', 'image/png' ]}
 	
 	serialize :source
 	validates :name, presence: true

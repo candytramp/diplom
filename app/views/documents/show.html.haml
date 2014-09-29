@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @document.description
+%p
+  %b Owner:
+  = @document.owner
+
+= link_to 'Edit', edit_document_path(@document)
+\|
+= link_to 'Back', documents_path

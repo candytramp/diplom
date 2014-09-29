@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :research_effort_files
+  resources :documents
 
   resources :research_efforts
+
+  resources :scientific_schools
 
   resources :state_programs
 

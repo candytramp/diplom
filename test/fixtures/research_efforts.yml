@@ -3,31 +3,33 @@
 one:
   name: MyText
   state_program_id: 
-  start_date: 2014-09-23
-  finish_date: 2014-09-23
+  start_date: 2014-09-29
+  finish_date: 2014-09-29
   grnti_id: 
   field_id: 
-  full_value: 9.99
+  full_value: 
   year_value: MyText
   state_reg_number: 1
   nir_number: 1
   inventory_number: 1
   nir_type_id: 
   source_id: 
-  scientific_school: MyText
+  scientific_school_id: 
+  is_nir: false
 
 two:
   name: MyText
   state_program_id: 
-  start_date: 2014-09-23
-  finish_date: 2014-09-23
+  start_date: 2014-09-29
+  finish_date: 2014-09-29
   grnti_id: 
   field_id: 
-  full_value: 9.99
+  full_value: 
   year_value: MyText
   state_reg_number: 1
   nir_number: 1
   inventory_number: 1
   nir_type_id: 
   source_id: 
-  scientific_school: MyText
+  scientific_school_id: 
+  is_nir: false
