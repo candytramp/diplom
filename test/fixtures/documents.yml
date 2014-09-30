@@ -2,8 +2,10 @@
 
 one:
   description: MyText
-  research_effort_id: 
+  owner_id: 
+  owner_type: Owner
 
 two:
   description: MyText
-  research_effort_id: 
+  owner_id: 
+  owner_type: Owner

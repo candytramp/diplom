@@ -3,7 +3,7 @@ class CreateFields < ActiveRecord::Migration
     create_table :fields do |t|
       t.text :name, null: false
       t.string :code, limit: 8, null: false
-
+			t.index :code, unique: true
       t.timestamps
     end
 

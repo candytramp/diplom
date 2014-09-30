@@ -1,7 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  funding_source: MyText
-
-two:
+  id: 1
   funding_source: MyText

@@ -47,6 +47,9 @@
     = f.text_field :source
   .field
     = f.label :scientific_school
-    = f.text_area :scientific_school
+    = f.text_field :scientific_school
+  .field
+    = f.label :is_nir
+    = f.check_box :is_nir
   .actions
     = f.submit 'Save'

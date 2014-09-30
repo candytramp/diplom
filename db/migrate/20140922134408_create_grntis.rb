@@ -2,7 +2,7 @@ class CreateGrntis < ActiveRecord::Migration
 
   def change
     create_table :grntis do |t|
-      t.string :grnti, limit: 2, null: false
+      t.string :grnti, limit: 8, null: false
       t.text :name, null: false
       t.timestamps
 
@@ -15,7 +15,7 @@ class CreateGrntis < ActiveRecord::Migration
         execute <<-SQL
           ALTER TABLE grntis
           ADD CONSTRAINT grnti_limit
-          CHECK (LENGTH(grnti) = 2);
+          CHECK (LENGTH(grnti) <= 8 AND LENGTH(grnti)>=2);
         SQL
       end
       dir.down do
