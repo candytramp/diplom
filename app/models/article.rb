@@ -107,11 +107,9 @@ class Article < ActiveRecord::Base
 	before_validation :convert_value_in_rinc_is_russian
 
 	has_many :documents, :as=> :owner
-	#has_attached_file :document, styles: {thumbnail: "60x60#"}
-	#validates_attachment :document, content_type: { content_type: ['application/pdf', 'image/jpeg', 'image/tiff', 'image/bmp', 'image/png' ]}
 	
 	serialize :source
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: true
 	validates :start_page, :finish_page, :year,
 	      numericality: { only_integer: true, greater_than: 0, allow_nil: false }
 	validates :year, numericality: {less_than_or_equal_to: Date.today.year} 

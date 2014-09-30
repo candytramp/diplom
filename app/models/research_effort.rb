@@ -8,7 +8,6 @@ class YearValueValidator < ActiveModel::Validator
 					record.errors[:year_value] << 'Year value out of range!'
 				end
 				summary += value.to_f #check if value converts correctly
-				puts summary.to_s
 			end
 			record.errors[:year_value] << 'Total sum greater than full_value' if summary > record.full_value.to_f
 
@@ -23,6 +22,7 @@ class ResearchEffort < ActiveRecord::Base
 
   serialize :year_value
   validates_with YearValueValidator
+	before_validation :convert_nir_value
   belongs_to :state_program
   belongs_to :grnti
   belongs_to :field
@@ -37,4 +37,14 @@ class ResearchEffort < ActiveRecord::Base
   validates :is_nir, :inclusion => {:in => [true, false]}
 
  	validates :full_value,  numericality: { greater_than: 0, allow_nil: false }
+
+	private
+
+	def convert_nir_value
+			if self.is_nir!=false && !self.is_nir.nil?
+			  self.is_nir = true 
+			else
+				self.is_nir = false
+      end	
+	end
 end
