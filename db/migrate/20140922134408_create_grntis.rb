@@ -5,6 +5,8 @@ class CreateGrntis < ActiveRecord::Migration
       t.string :grnti, limit: 2, null: false
       t.text :name, null: false
       t.timestamps
+
+      t.index :grnti, :unique => true
     end
     
 	reversible do |dir|
