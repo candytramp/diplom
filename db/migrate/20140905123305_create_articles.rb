@@ -7,6 +7,7 @@ def change
       t.integer :finish_page, :null=>false
       t.text :link
       t.integer :year, :null=>false
+      t.index :code, unique: true
       t.timestamps
     end
     

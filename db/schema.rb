@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20140929124148) do
     t.integer  "nir_type_id",                                   null: false
     t.integer  "source_id",                                     null: false
     t.integer  "scientific_school_id",                          null: false
-    t.boolean  "is_nir"
+    t.string   "is_nir",                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -15,5 +15,22 @@ one:
   nir_type_id: 1
   source_id: 1
   scientific_school_id: 1
+  is_nir: true
+
+two:
+  name: gtgr
+  state_program_id: 1
+  start_date: 2011-09-29
+  finish_date: 2020-09-29
+  grnti_id: 1
+  field_id: 1
+  full_value: 1000000000.00
+  year_value: <%={2000=>2000000}%>
+  state_reg_number: 1
+  nir_number: 1
+  inventory_number: 1
+  nir_type_id: 1
+  source_id: 1
+  scientific_school_id: 1
   is_nir: false
 

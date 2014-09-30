@@ -4,9 +4,8 @@ class CreateGrntis < ActiveRecord::Migration
     create_table :grntis do |t|
       t.string :grnti, limit: 8, null: false
       t.text :name, null: false
+			t.index :grnti, unique: true
       t.timestamps
-
-      t.index :grnti, :unique => true
     end
     
 	reversible do |dir|
