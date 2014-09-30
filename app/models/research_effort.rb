@@ -20,6 +20,8 @@ end
 
 
 class ResearchEffort < ActiveRecord::Base
+
+  serialize :year_value
   validates_with YearValueValidator
   belongs_to :state_program
   belongs_to :grnti
@@ -29,8 +31,10 @@ class ResearchEffort < ActiveRecord::Base
   belongs_to :scientific_school
 	has_many :documents, :as=> :owner
 
-	validates :name,:state_program_id, :start_date, :finish_date, :is_nir,
-            :grnti_id, :field_id, :nir_type_id, :source_id, :scientific_school_id, presence: true
+	validates :name,:state_program_id, :start_date, :finish_date,
+					  :grnti_id, :field_id, :nir_type_id, :source_id, 
+						:scientific_school_id, presence: true
+  validates :is_nir, :inclusion => {:in => [true, false]}
 
  	validates :full_value,  numericality: { greater_than: 0, allow_nil: false }
 end
