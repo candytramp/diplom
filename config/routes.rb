@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :licences
+
+  resources :ois_requests
+
   resources :documents
 
   resources :research_efforts

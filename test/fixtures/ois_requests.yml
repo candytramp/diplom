@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  priority: 2014-10-02
+  author: MyText
+  name: MyText
+  object: MyText
+  reg_agency: MyString
+  research_effort_id: 
+  status: MyString
+
+two:
+  number: MyString
+  priority: 2014-10-02
+  author: MyText
+  name: MyText
+  object: MyText
+  reg_agency: MyString
+  research_effort_id: 
+  status: MyString

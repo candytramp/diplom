@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @licence.number
+%p
+  %b Reg date:
+  = @licence.reg_date
+%p
+  %b Type:
+  = @licence.type
+%p
+  %b Name:
+  = @licence.name
+%p
+  %b Expiration date:
+  = @licence.expiration_date
+%p
+  %b Req number:
+  = @licence.req_number
+%p
+  %b Req author:
+  = @licence.req_author
+%p
+  %b Req object:
+  = @licence.req_object
+%p
+  %b Req status:
+  = @licence.req_status
+%p
+  %b Reg agency:
+  = @licence.reg_agency
+%p
+  %b Support:
+  = @licence.support
+%p
+  %b Req priority:
+  = @licence.req_priority
+%p
+  %b Reseff name:
+  = @licence.reseff_name
+
+= link_to 'Edit', edit_licence_path(@licence)
+\|
+= link_to 'Back', licences_path

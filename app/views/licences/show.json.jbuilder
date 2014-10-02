@@ -1,0 +1,1 @@
+json.extract! @licence, :id, :number, :reg_date, :type, :name, :expiration_date, :req_number, :req_author, :req_object, :req_status, :reg_agency, :support, :req_priority, :reseff_name, :created_at, :updated_at

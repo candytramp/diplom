@@ -1,0 +1,43 @@
+%h1 Listing licences
+
+%table
+  %tr
+    %th Number
+    %th Reg date
+    %th Type
+    %th Name
+    %th Expiration date
+    %th Req number
+    %th Req author
+    %th Req object
+    %th Req status
+    %th Reg agency
+    %th Support
+    %th Req priority
+    %th Reseff name
+    %th
+    %th
+    %th
+
+  - @licences.each do |licence|
+    %tr
+      %td= licence.number
+      %td= licence.reg_date
+      %td= licence.type
+      %td= licence.name
+      %td= licence.expiration_date
+      %td= licence.req_number
+      %td= licence.req_author
+      %td= licence.req_object
+      %td= licence.req_status
+      %td= licence.reg_agency
+      %td= licence.support
+      %td= licence.req_priority
+      %td= licence.reseff_name
+      %td= link_to 'Show', licence
+      %td= link_to 'Edit', edit_licence_path(licence)
+      %td= link_to 'Destroy', licence, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Licence', new_licence_path
