@@ -4,19 +4,28 @@ class CreateOisRequests < ActiveRecord::Migration
       t.string :number, null: false
       t.date :priority, null: false
       t.text :author, 	null: false
-      t.text :name			
+      t.text :name	, 	null: false		
       t.text :object, 	null: false
       t.string :reg_agency, null: false
       t.references :research_effort, index: true
-      t.string :status, null: false #default value?
+      t.string :status, null: false default: 'российская'
 
       t.timestamps
     end
     reversible do |dir|
       dir.up do
+				execute <<-SQL
+          ALTER TABLE ois_requests
+          ADD CONSTRAINT status_object_check
+          CHECK (status IN ('российская', 'международная') AND object IN ('изобретение','полезная модель','промышленный образец','программа для ЭВМ','база данных','товарный знак'));
+        SQL
         'ALTER TABLE ois_requests ADD FOREIGN KEY (research_effort_id) REFERENCES research_efforts(id)'  
       end
       dir.down do
+				execute <<-SQL
+          ALTER TABLE ois_requests
+          DROP CONSTRAINT status_check
+        SQL
       end
     end
   end
