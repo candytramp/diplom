@@ -33,25 +33,25 @@ class SourceValidator < ActiveModel::Validator
     result = ""
 	if record.source.present?
 	   	if !record.source.has_key?(:type) 
-			record.errors[:source] << "Type of document is not specified!"
+			record.errors[:source] << "Тип докумнта не определен"
 		else
 			case record.source[:type]
-			when 'magazine'
+			when 'журнал'
 				  result = validates_magazine(record.source) 
 				if !result.blank?
-					record.errors[:source] << "Incorrect attridbute value #{result}"	
+					record.errors[:source] << "Неверное значение аттрибута #{result}"	
 				end	  		  
-			when 'collected papers'
+			when 'сборник трудов'
 				result = validates_papers(record.source) 
 				if !result.blank?
-					record.errors[:source] << "Incorrect attribute value #{result}"
+					record.errors[:source] << "Неверное значение аттрибута #{result}"
 		    end 	
 			else
-			  record.errors[:source] << 'Incorrect type value'	
+			  record.errors[:source] << 'Неверное значение типа документа'	
 			end	
 		end
 	else
-		record.errors[:source] << 'Missed source value!'			 
+		record.errors[:source] << 'Отсутствует источник'			 
 	end 
   end
   
@@ -82,7 +82,7 @@ class SourceValidator < ActiveModel::Validator
     required_keys=[:name, :year, :type]
     required_keys.each do |key|
     	if !hash.has_key?(key)
-    		return "#{key} (missed attribute)"
+    		return "#{key} (пропущенный атрибут)"
       end			
     end
   	hash.each do |key, value|

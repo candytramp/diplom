@@ -3,12 +3,12 @@ class CreateOisRequests < ActiveRecord::Migration
     create_table :ois_requests do |t|
       t.string :number, null: false
       t.date :priority, null: false
-      t.text :author, null: false
-      t.text :name#, null: false
-      t.text :object, null: false
+      t.text :author, 	null: false
+      t.text :name			
+      t.text :object, 	null: false
       t.string :reg_agency, null: false
-      t.references :research_effort, index: true#, null: true
-      t.string :status, null: false #can it have default value?
+      t.references :research_effort, index: true
+      t.string :status, null: false #default value?
 
       t.timestamps
     end

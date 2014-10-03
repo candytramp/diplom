@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929124148) do
+ActiveRecord::Schema.define(version: 20141002115756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,24 @@ ActiveRecord::Schema.define(version: 20140929124148) do
 
   add_index "grntis", ["grnti", "name"], name: "index_grntis_on_grnti_and_name", unique: true, using: :btree
 
+  create_table "licences", force: true do |t|
+    t.string   "number",          limit: 16, null: false
+    t.date     "reg_date"
+    t.string   "type",            limit: 32, null: false
+    t.text     "name",                       null: false
+    t.date     "expiration_date"
+    t.string   "req_number"
+    t.text     "req_author"
+    t.text     "req_object"
+    t.string   "req_status"
+    t.string   "reg_agency"
+    t.date     "req_priority"
+    t.string   "support"
+    t.text     "reseff_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "nir_types", force: true do |t|
     t.string   "name",       limit: 30, null: false
     t.datetime "created_at"
@@ -66,6 +84,21 @@ ActiveRecord::Schema.define(version: 20140929124148) do
   end
 
   add_index "nir_types", ["name"], name: "index_nir_types_on_name", unique: true, using: :btree
+
+  create_table "ois_requests", force: true do |t|
+    t.string   "number",             null: false
+    t.date     "priority",           null: false
+    t.text     "author",             null: false
+    t.text     "name"
+    t.text     "object",             null: false
+    t.string   "reg_agency",         null: false
+    t.integer  "research_effort_id"
+    t.string   "status",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ois_requests", ["research_effort_id"], name: "index_ois_requests_on_research_effort_id", using: :btree
 
   create_table "people", force: true do |t|
     t.string   "last_name",    limit: 64, null: false
