@@ -7,6 +7,8 @@ one:
   finish_page: 1
   link: MyText
   year: 1
+  creator_login: MyString
+  creator_data: MyText
 
 two:
   name: MyText
@@ -15,3 +17,5 @@ two:
   finish_page: 1
   link: MyText
   year: 1
+  creator_login: MyString
+  creator_data: MyText

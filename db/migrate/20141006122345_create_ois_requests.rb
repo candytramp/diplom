@@ -8,11 +8,13 @@ class CreateOisRequests < ActiveRecord::Migration
       t.text :object, 	null: false
       t.string :reg_agency, null: false
       t.references :research_effort, index: true
-      t.string :status, null: false default: 'российская'
+      t.string :status, null: false, default: 'российская'
+      t.string :creator_login
+      t.text :creator_data
 
       t.timestamps
     end
-    reversible do |dir|
+ 		reversible do |dir|
       dir.up do
 				execute <<-SQL
           ALTER TABLE ois_requests
@@ -24,7 +26,7 @@ class CreateOisRequests < ActiveRecord::Migration
       dir.down do
 				execute <<-SQL
           ALTER TABLE ois_requests
-          DROP CONSTRAINT status_check
+          DROP CONSTRAINT status_object_check
         SQL
       end
     end

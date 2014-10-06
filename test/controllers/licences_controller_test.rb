@@ -18,7 +18,7 @@ class LicencesControllerTest < ActionController::TestCase
 
   test "should create licence" do
     assert_difference('Licence.count') do
-      post :create, licence: { expiration_date: @licence.expiration_date, name: @licence.name, number: @licence.number, reg_agency: @licence.reg_agency, reg_date: @licence.reg_date, req_author: @licence.req_author, req_number: @licence.req_number, req_object: @licence.req_object, req_priority: @licence.req_priority, req_status: @licence.req_status, reseff_name: @licence.reseff_name, support: @licence.support, type: @licence.type }
+      post :create, licence: { creator_data: @licence.creator_data, creator_login: @licence.creator_login, expiration_date: @licence.expiration_date, name: @licence.name, number: @licence.number, reg_date: @licence.reg_date, req_agency: @licence.req_agency, req_author: @licence.req_author, req_number: @licence.req_number, req_object: @licence.req_object, req_priority: @licence.req_priority, req_status: @licence.req_status, research_effort_id: @licence.research_effort_id, support: @licence.support, type: @licence.type }
     end
 
     assert_redirected_to licence_path(assigns(:licence))
@@ -35,7 +35,7 @@ class LicencesControllerTest < ActionController::TestCase
   end
 
   test "should update licence" do
-    patch :update, id: @licence, licence: { expiration_date: @licence.expiration_date, name: @licence.name, number: @licence.number, reg_agency: @licence.reg_agency, reg_date: @licence.reg_date, req_author: @licence.req_author, req_number: @licence.req_number, req_object: @licence.req_object, req_priority: @licence.req_priority, req_status: @licence.req_status, reseff_name: @licence.reseff_name, support: @licence.support, type: @licence.type }
+    patch :update, id: @licence, licence: { creator_data: @licence.creator_data, creator_login: @licence.creator_login, expiration_date: @licence.expiration_date, name: @licence.name, number: @licence.number, reg_date: @licence.reg_date, req_agency: @licence.req_agency, req_author: @licence.req_author, req_number: @licence.req_number, req_object: @licence.req_object, req_priority: @licence.req_priority, req_status: @licence.req_status, research_effort_id: @licence.research_effort_id, support: @licence.support, type: @licence.type }
     assert_redirected_to licence_path(assigns(:licence))
   end
 

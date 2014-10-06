@@ -12,5 +12,11 @@
   .field
     = f.label :code
     = f.text_field :code
+  .field
+    = f.label :creator_login
+    = f.text_field :creator_login
+  .field
+    = f.label :creator_data
+    = f.text_area :creator_data
   .actions
     = f.submit 'Save'

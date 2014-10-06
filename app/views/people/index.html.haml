@@ -2,22 +2,26 @@
 
 %table
   %tr
-    %th Last name
     %th First name
+    %th Last name
     %th Second name
     %th External ids
     %th Birthday
+    %th Creator login
+    %th Creator data
     %th
     %th
     %th
 
   - @people.each do |person|
     %tr
-      %td= person.last_name
       %td= person.first_name
+      %td= person.last_name
       %td= person.second_name
       %td= person.external_ids
       %td= person.birthday
+      %td= person.creator_login
+      %td= person.creator_data
       %td= link_to 'Show', person
       %td= link_to 'Edit', edit_person_path(person)
       %td= link_to 'Destroy', person, :method => :delete, :data => { :confirm => 'Are you sure?' }

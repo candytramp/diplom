@@ -69,6 +69,6 @@ class GrntisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def grnti_params
-      params.require(:grnti).permit(:grnti, :name)
+      params.require(:grnti).permit(:name, :grnti, :creator_login, :creator_data)
     end
 end

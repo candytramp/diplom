@@ -32,13 +32,13 @@
     = f.text_area :year_value
   .field
     = f.label :state_reg_number
-    = f.number_field :state_reg_number
+    = f.text_field :state_reg_number
   .field
     = f.label :nir_number
-    = f.number_field :nir_number
+    = f.text_field :nir_number
   .field
     = f.label :inventory_number
-    = f.number_field :inventory_number
+    = f.text_field :inventory_number
   .field
     = f.label :nir_type
     = f.text_field :nir_type
@@ -50,6 +50,12 @@
     = f.text_field :scientific_school
   .field
     = f.label :is_nir
-    = f.check_box :is_nir
+    = f.text_field :is_nir
+  .field
+    = f.label :creator_login
+    = f.text_field :creator_login
+  .field
+    = f.label :creator_data
+    = f.text_area :creator_data
   .actions
     = f.submit 'Save'

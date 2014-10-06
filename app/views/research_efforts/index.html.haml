@@ -17,6 +17,8 @@
     %th Source
     %th Scientific school
     %th Is nir
+    %th Creator login
+    %th Creator data
     %th
     %th
     %th
@@ -38,6 +40,8 @@
       %td= research_effort.source
       %td= research_effort.scientific_school
       %td= research_effort.is_nir
+      %td= research_effort.creator_login
+      %td= research_effort.creator_data
       %td= link_to 'Show', research_effort
       %td= link_to 'Edit', edit_research_effort_path(research_effort)
       %td= link_to 'Destroy', research_effort, :method => :delete, :data => { :confirm => 'Are you sure?' }

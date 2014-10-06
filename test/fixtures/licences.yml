@@ -2,30 +2,34 @@
 
 one:
   number: MyString
-  reg_date: 2014-10-02
+  reg_date: 2014-10-06
   type: 
   name: MyText
-  expiration_date: 2014-10-02
+  expiration_date: 2014-10-06
   req_number: MyString
   req_author: MyText
   req_object: MyText
   req_status: MyString
-  reg_agency: MyString
+  req_agency: MyString
+  req_priority: 2014-10-06
   support: MyString
-  req_priority: 2014-10-02
-  reseff_name: MyText
+  research_effort_id: 
+  creator_login: MyString
+  creator_data: MyText
 
 two:
   number: MyString
-  reg_date: 2014-10-02
+  reg_date: 2014-10-06
   type: 
   name: MyText
-  expiration_date: 2014-10-02
+  expiration_date: 2014-10-06
   req_number: MyString
   req_author: MyText
   req_object: MyText
   req_status: MyString
-  reg_agency: MyString
+  req_agency: MyString
+  req_priority: 2014-10-06
   support: MyString
-  req_priority: 2014-10-02
-  reseff_name: MyText
+  research_effort_id: 
+  creator_login: MyString
+  creator_data: MyText

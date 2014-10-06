@@ -2,20 +2,24 @@
 
 one:
   number: MyString
-  priority: 2014-10-02
+  priority: 2014-10-06
   author: MyText
   name: MyText
   object: MyText
   reg_agency: MyString
   research_effort_id: 
   status: MyString
+  creator_login: MyString
+  creator_data: MyText
 
 two:
   number: MyString
-  priority: 2014-10-02
+  priority: 2014-10-06
   author: MyText
   name: MyText
   object: MyText
   reg_agency: MyString
   research_effort_id: 
   status: MyString
+  creator_login: MyString
+  creator_data: MyText

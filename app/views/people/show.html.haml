@@ -1,11 +1,11 @@
 %p#notice= notice
 
 %p
-  %b Last name:
-  = @person.last_name
-%p
   %b First name:
   = @person.first_name
+%p
+  %b Last name:
+  = @person.last_name
 %p
   %b Second name:
   = @person.second_name
@@ -15,6 +15,12 @@
 %p
   %b Birthday:
   = @person.birthday
+%p
+  %b Creator login:
+  = @person.creator_login
+%p
+  %b Creator data:
+  = @person.creator_data
 
 = link_to 'Edit', edit_person_path(@person)
 \|

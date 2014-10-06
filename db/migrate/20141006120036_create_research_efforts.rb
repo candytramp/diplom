@@ -16,12 +16,12 @@ class CreateResearchEfforts < ActiveRecord::Migration
       t.references :source, index: true, null: false
       t.references :scientific_school, index: true, null: false
       t.string :is_nir, null: false
-
 			t.index :name, unique: true
+      t.string :creator_login
+      t.text :creator_data
 
       t.timestamps
     end
-
 		reversible do |dir|
       dir.up do
         'ALTER TABLE research_efforts ADD FOREIGN KEY (state_program_id) REFERENCES state_programs(id)'

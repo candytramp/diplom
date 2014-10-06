@@ -24,6 +24,12 @@
 %p
   %b Status:
   = @ois_request.status
+%p
+  %b Creator login:
+  = @ois_request.creator_login
+%p
+  %b Creator data:
+  = @ois_request.creator_data
 
 = link_to 'Edit', edit_ois_request_path(@ois_request)
 \|

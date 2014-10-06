@@ -3,6 +3,8 @@
 %table
   %tr
     %th Name
+    %th Creator login
+    %th Creator data
     %th
     %th
     %th
@@ -10,6 +12,8 @@
   - @state_programs.each do |state_program|
     %tr
       %td= state_program.name
+      %td= state_program.creator_login
+      %td= state_program.creator_data
       %td= link_to 'Show', state_program
       %td= link_to 'Edit', edit_state_program_path(state_program)
       %td= link_to 'Destroy', state_program, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,1 +1,1 @@
-json.extract! @grnti, :id, :grnti, :name, :created_at, :updated_at
+json.extract! @grnti, :id, :name, :grnti, :creator_login, :creator_data, :created_at, :updated_at

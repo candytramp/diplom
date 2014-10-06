@@ -109,6 +109,7 @@ class Article < ActiveRecord::Base
 	has_many :documents, :as=> :owner
 	
 	serialize :source
+	serialize :creator_data
 	validates :name, presence: true, uniqueness: true
 	validates :start_page, :finish_page, :year,
 	      numericality: { only_integer: true, greater_than: 0, allow_nil: false }

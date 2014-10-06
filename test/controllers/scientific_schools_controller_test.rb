@@ -18,7 +18,7 @@ class ScientificSchoolsControllerTest < ActionController::TestCase
 
   test "should create scientific_school" do
     assert_difference('ScientificSchool.count') do
-      post :create, scientific_school: { name: @scientific_school.name }
+      post :create, scientific_school: { creator_data: @scientific_school.creator_data, creator_login: @scientific_school.creator_login, name: @scientific_school.name }
     end
 
     assert_redirected_to scientific_school_path(assigns(:scientific_school))
@@ -35,7 +35,7 @@ class ScientificSchoolsControllerTest < ActionController::TestCase
   end
 
   test "should update scientific_school" do
-    patch :update, id: @scientific_school, scientific_school: { name: @scientific_school.name }
+    patch :update, id: @scientific_school, scientific_school: { creator_data: @scientific_school.creator_data, creator_login: @scientific_school.creator_login, name: @scientific_school.name }
     assert_redirected_to scientific_school_path(assigns(:scientific_school))
   end
 

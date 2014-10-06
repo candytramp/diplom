@@ -10,6 +10,8 @@
     %th Reg agency
     %th Research effort
     %th Status
+    %th Creator login
+    %th Creator data
     %th
     %th
     %th
@@ -24,6 +26,8 @@
       %td= ois_request.reg_agency
       %td= ois_request.research_effort
       %td= ois_request.status
+      %td= ois_request.creator_login
+      %td= ois_request.creator_data
       %td= link_to 'Show', ois_request
       %td= link_to 'Edit', edit_ois_request_path(ois_request)
       %td= link_to 'Destroy', ois_request, :method => :delete, :data => { :confirm => 'Are you sure?' }

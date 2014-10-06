@@ -3,6 +3,12 @@
 %p
   %b Name:
   = @nir_type.name
+%p
+  %b Creator login:
+  = @nir_type.creator_login
+%p
+  %b Creator data:
+  = @nir_type.creator_data
 
 = link_to 'Edit', edit_nir_type_path(@nir_type)
 \|

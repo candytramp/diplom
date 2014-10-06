@@ -1,15 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  last_name: MyString
   first_name: MyString
+  last_name: MyString
   second_name: MyString
   external_ids: MyText
-  birthday: 2014-08-29
+  birthday: 2014-10-06
+  creator_login: MyString
+  creator_data: MyText
 
 two:
-  last_name: MyString
   first_name: MyString
+  last_name: MyString
   second_name: MyString
   external_ids: MyText
-  birthday: 2014-08-29
+  birthday: 2014-10-06
+  creator_login: MyString
+  creator_data: MyText

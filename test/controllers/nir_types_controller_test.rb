@@ -18,7 +18,7 @@ class NirTypesControllerTest < ActionController::TestCase
 
   test "should create nir_type" do
     assert_difference('NirType.count') do
-      post :create, nir_type: { name: @nir_type.name }
+      post :create, nir_type: { creator_data: @nir_type.creator_data, creator_login: @nir_type.creator_login, name: @nir_type.name }
     end
 
     assert_redirected_to nir_type_path(assigns(:nir_type))
@@ -35,7 +35,7 @@ class NirTypesControllerTest < ActionController::TestCase
   end
 
   test "should update nir_type" do
-    patch :update, id: @nir_type, nir_type: { name: @nir_type.name }
+    patch :update, id: @nir_type, nir_type: { creator_data: @nir_type.creator_data, creator_login: @nir_type.creator_login, name: @nir_type.name }
     assert_redirected_to nir_type_path(assigns(:nir_type))
   end
 

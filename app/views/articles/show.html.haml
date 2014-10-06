@@ -18,6 +18,12 @@
 %p
   %b Year:
   = @article.year
+%p
+  %b Creator login:
+  = @article.creator_login
+%p
+  %b Creator data:
+  = @article.creator_data
 
 = link_to 'Edit', edit_article_path(@article)
 \|

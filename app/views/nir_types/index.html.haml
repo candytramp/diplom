@@ -3,6 +3,8 @@
 %table
   %tr
     %th Name
+    %th Creator login
+    %th Creator data
     %th
     %th
     %th
@@ -10,6 +12,8 @@
   - @nir_types.each do |nir_type|
     %tr
       %td= nir_type.name
+      %td= nir_type.creator_login
+      %td= nir_type.creator_data
       %td= link_to 'Show', nir_type
       %td= link_to 'Edit', edit_nir_type_path(nir_type)
       %td= link_to 'Destroy', nir_type, :method => :delete, :data => { :confirm => 'Are you sure?' }

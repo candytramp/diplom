@@ -18,7 +18,7 @@ class FieldsControllerTest < ActionController::TestCase
 
   test "should create field" do
     assert_difference('Field.count') do
-      post :create, field: { code: @field.code, name: @field.name }
+      post :create, field: { code: @field.code, creator_data: @field.creator_data, creator_login: @field.creator_login, name: @field.name }
     end
 
     assert_redirected_to field_path(assigns(:field))
@@ -35,7 +35,7 @@ class FieldsControllerTest < ActionController::TestCase
   end
 
   test "should update field" do
-    patch :update, id: @field, field: { code: @field.code, name: @field.name }
+    patch :update, id: @field, field: { code: @field.code, creator_data: @field.creator_data, creator_login: @field.creator_login, name: @field.name }
     assert_redirected_to field_path(assigns(:field))
   end
 

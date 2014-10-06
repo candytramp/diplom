@@ -69,6 +69,6 @@ class LicencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def licence_params
-      params.require(:licence).permit(:number, :reg_date, :type, :name, :expiration_date, :req_number, :req_author, :req_object, :req_status, :reg_agency, :support, :req_priority, :reseff_name)
+      params.require(:licence).permit(:number, :reg_date, :type, :name, :expiration_date, :req_number, :req_author, :req_object, :req_status, :req_agency, :req_priority, :support, :research_effort_id, :creator_login, :creator_data)
     end
 end

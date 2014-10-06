@@ -18,7 +18,7 @@ class OisRequestsControllerTest < ActionController::TestCase
 
   test "should create ois_request" do
     assert_difference('OisRequest.count') do
-      post :create, ois_request: { author: @ois_request.author, name: @ois_request.name, number: @ois_request.number, object: @ois_request.object, priority: @ois_request.priority, reg_agency: @ois_request.reg_agency, research_effort_id: @ois_request.research_effort_id, status: @ois_request.status }
+      post :create, ois_request: { author: @ois_request.author, creator_data: @ois_request.creator_data, creator_login: @ois_request.creator_login, name: @ois_request.name, number: @ois_request.number, object: @ois_request.object, priority: @ois_request.priority, reg_agency: @ois_request.reg_agency, research_effort_id: @ois_request.research_effort_id, status: @ois_request.status }
     end
 
     assert_redirected_to ois_request_path(assigns(:ois_request))
@@ -35,7 +35,7 @@ class OisRequestsControllerTest < ActionController::TestCase
   end
 
   test "should update ois_request" do
-    patch :update, id: @ois_request, ois_request: { author: @ois_request.author, name: @ois_request.name, number: @ois_request.number, object: @ois_request.object, priority: @ois_request.priority, reg_agency: @ois_request.reg_agency, research_effort_id: @ois_request.research_effort_id, status: @ois_request.status }
+    patch :update, id: @ois_request, ois_request: { author: @ois_request.author, creator_data: @ois_request.creator_data, creator_login: @ois_request.creator_login, name: @ois_request.name, number: @ois_request.number, object: @ois_request.object, priority: @ois_request.priority, reg_agency: @ois_request.reg_agency, research_effort_id: @ois_request.research_effort_id, status: @ois_request.status }
     assert_redirected_to ois_request_path(assigns(:ois_request))
   end
 

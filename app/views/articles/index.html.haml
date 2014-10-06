@@ -8,6 +8,8 @@
     %th Finish page
     %th Link
     %th Year
+    %th Creator login
+    %th Creator data
     %th
     %th
     %th
@@ -20,6 +22,8 @@
       %td= article.finish_page
       %td= article.link
       %td= article.year
+      %td= article.creator_login
+      %td= article.creator_data
       %td= link_to 'Show', article
       %td= link_to 'Edit', edit_article_path(article)
       %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }

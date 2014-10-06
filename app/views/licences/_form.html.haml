@@ -34,16 +34,22 @@
     = f.label :req_status
     = f.text_field :req_status
   .field
-    = f.label :reg_agency
-    = f.text_field :reg_agency
-  .field
-    = f.label :support
-    = f.text_field :support
+    = f.label :req_agency
+    = f.text_field :req_agency
   .field
     = f.label :req_priority
     = f.date_select :req_priority
   .field
-    = f.label :reseff_name
-    = f.text_area :reseff_name
+    = f.label :support
+    = f.text_field :support
+  .field
+    = f.label :research_effort
+    = f.text_field :research_effort
+  .field
+    = f.label :creator_login
+    = f.text_field :creator_login
+  .field
+    = f.label :creator_data
+    = f.text_area :creator_data
   .actions
     = f.submit 'Save'

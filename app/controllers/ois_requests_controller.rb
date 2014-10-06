@@ -69,6 +69,6 @@ class OisRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ois_request_params
-      params.require(:ois_request).permit(:number, :priority, :author, :name, :object, :reg_agency, :research_effort_id, :status)
+      params.require(:ois_request).permit(:number, :priority, :author, :name, :object, :reg_agency, :research_effort_id, :status, :creator_login, :creator_data)
     end
 end

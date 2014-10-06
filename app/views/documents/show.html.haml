@@ -6,6 +6,12 @@
 %p
   %b Owner:
   = @document.owner
+%p
+  %b Creator login:
+  = @document.creator_login
+%p
+  %b Creator data:
+  = @document.creator_data
 
 = link_to 'Edit', edit_document_path(@document)
 \|

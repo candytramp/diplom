@@ -4,8 +4,12 @@ one:
   description: MyText
   owner_id: 
   owner_type: Owner
+  creator_login: MyString
+  creator_data: MyText
 
 two:
   description: MyText
   owner_id: 
   owner_type: Owner
+  creator_login: MyString
+  creator_data: MyText

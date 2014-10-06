@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
   name: MyText
   code: MyString
+  creator_login: MyString
+  creator_data: MyText
 
+two:
+  name: MyText
+  code: MyString
+  creator_login: MyString
+  creator_data: MyText

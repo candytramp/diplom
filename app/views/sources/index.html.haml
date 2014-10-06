@@ -3,6 +3,8 @@
 %table
   %tr
     %th Funding source
+    %th Creator login
+    %th Creator data
     %th
     %th
     %th
@@ -10,6 +12,8 @@
   - @sources.each do |source|
     %tr
       %td= source.funding_source
+      %td= source.creator_login
+      %td= source.creator_data
       %td= link_to 'Show', source
       %td= link_to 'Edit', edit_source_path(source)
       %td= link_to 'Destroy', source, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -11,10 +11,12 @@
     %th Req author
     %th Req object
     %th Req status
-    %th Reg agency
-    %th Support
+    %th Req agency
     %th Req priority
-    %th Reseff name
+    %th Support
+    %th Research effort
+    %th Creator login
+    %th Creator data
     %th
     %th
     %th
@@ -30,10 +32,12 @@
       %td= licence.req_author
       %td= licence.req_object
       %td= licence.req_status
-      %td= licence.reg_agency
-      %td= licence.support
+      %td= licence.req_agency
       %td= licence.req_priority
-      %td= licence.reseff_name
+      %td= licence.support
+      %td= licence.research_effort
+      %td= licence.creator_login
+      %td= licence.creator_data
       %td= link_to 'Show', licence
       %td= link_to 'Edit', edit_licence_path(licence)
       %td= link_to 'Destroy', licence, :method => :delete, :data => { :confirm => 'Are you sure?' }

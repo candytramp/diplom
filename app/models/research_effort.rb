@@ -22,6 +22,7 @@ end
 class ResearchEffort < ActiveRecord::Base
 
   serialize :year_value
+	serialize :creator_data
   validates_with YearValueValidator
 	before_validation :convert_nir_value
   belongs_to :state_program

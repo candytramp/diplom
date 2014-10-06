@@ -1,17 +1,19 @@
 class CreateArticles < ActiveRecord::Migration
-def change
+  def change
     create_table :articles do |t|
-      t.text :name, :null=>false
+  		t.text :name, :null=>false
       t.text :source
       t.integer :start_page, :null=>false
       t.integer :finish_page, :null=>false
       t.text :link
       t.integer :year, :null=>false
-      t.index :code, unique: true
+      t.string :creator_login
+      t.text :creator_data
+			t.index :name, unique: true
       t.timestamps
     end
-    
-    reversible do |dir|
+
+		reversible do |dir|
       dir.up do
         # add a CHECK constraint
         execute <<-SQL
@@ -21,8 +23,8 @@ def change
         SQL
         execute <<-SQL1
           ALTER TABLE articles
-		  ADD CONSTRAINT year_max_value
-		  CHECK (year < CAST(EXTRACT(year from now()) as Integer));
+		 		 	ADD CONSTRAINT year_max_value
+		  		CHECK (year < CAST(EXTRACT(year from now()) as Integer));
  		 
 	    SQL1
       end
@@ -37,6 +39,5 @@ def change
         SQL
       end
     end
-    
   end
 end

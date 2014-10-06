@@ -1,11 +1,17 @@
 %p#notice= notice
 
 %p
+  %b Name:
+  = @grnti.name
+%p
   %b Grnti:
   = @grnti.grnti
 %p
-  %b Name:
-  = @grnti.name
+  %b Creator login:
+  = @grnti.creator_login
+%p
+  %b Creator data:
+  = @grnti.creator_data
 
 = link_to 'Edit', edit_grnti_path(@grnti)
 \|
