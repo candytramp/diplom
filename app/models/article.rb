@@ -107,7 +107,8 @@ class Article < ActiveRecord::Base
 	before_validation :convert_value_in_rinc_is_russian
 
 	has_many :documents, :as=> :owner
-	
+	has_one :report	
+
 	serialize :source
 	serialize :creator_data
 	validates :name, presence: true, uniqueness: true

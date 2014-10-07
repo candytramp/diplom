@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006124447) do
+ActiveRecord::Schema.define(version: 20141007104222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 20141006124447) do
   end
 
   add_index "articles", ["name"], name: "index_articles_on_name", unique: true, using: :btree
+
+  create_table "conferences", force: true do |t|
+    t.text     "name",          null: false
+    t.text     "country"
+    t.text     "city"
+    t.date     "start"
+    t.date     "finish"
+    t.integer  "year"
+    t.text     "ctype",         null: false
+    t.string   "creator_login"
+    t.text     "creator_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "documents", force: true do |t|
     t.text     "description"
@@ -129,6 +143,17 @@ ActiveRecord::Schema.define(version: 20141006124447) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reports", force: true do |t|
+    t.text     "title"
+    t.integer  "conference_id", null: false
+    t.string   "creator_login"
+    t.text     "creator_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reports", ["conference_id"], name: "index_reports_on_conference_id", using: :btree
 
   create_table "research_efforts", force: true do |t|
     t.text     "name",                                          null: false

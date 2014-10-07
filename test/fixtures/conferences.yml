@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  country: MyText
+  city: MyText
+  start: 2014-10-07
+  finish: 2014-10-07
+  year: 1
+  ctype: MyText
+  creator_login: MyString
+  creator_data: MyText
+
+two:
+  name: MyText
+  country: MyText
+  city: MyText
+  start: 2014-10-07
+  finish: 2014-10-07
+  year: 1
+  ctype: MyText
+  creator_login: MyString
+  creator_data: MyText

@@ -24,7 +24,7 @@ class CreateArticles < ActiveRecord::Migration
         execute <<-SQL1
           ALTER TABLE articles
 		 		 	ADD CONSTRAINT year_max_value
-		  		CHECK (year < CAST(EXTRACT(year from now()) as Integer));
+		  		CHECK (year <= CAST(EXTRACT(year from now()) as Integer));
  		 
 	    SQL1
       end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  conference_id: 
+  creator_login: MyString
+  creator_data: MyText
+
+two:
+  title: MyText
+  conference_id: 
+  creator_login: MyString
+  creator_data: MyText
