@@ -108,7 +108,7 @@ class Article < ActiveRecord::Base
 
 	has_many :documents, :as=> :owner
 	has_one :report	
-
+	has_paper_trail
 	serialize :source
 	serialize :creator_data
 	validates :name, presence: true, uniqueness: true
