@@ -1,6 +1,5 @@
 class Person < ActiveRecord::Base
   serialize :external_ids
-  serialize :creator_data
 	has_one :user
 	has_paper_trail
   include StringStrip

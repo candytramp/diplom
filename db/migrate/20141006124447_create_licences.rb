@@ -2,9 +2,9 @@ class CreateLicences < ActiveRecord::Migration
   def change
     create_table :licences do |t|
       t.string :number, null: false, limit: 16
-      t.date :reg_date # может ли быть внесен патент без даты регистрации
+      t.date :reg_date, null: false
       t.string :type, null: false, limit: 32
-      t.text :name, null: false #?
+      t.text :name, null: false 
       t.date :expiration_date
 
       t.string :req_number
@@ -23,20 +23,19 @@ class CreateLicences < ActiveRecord::Migration
     end
   reversible do |dir|
       dir.up do
-        execute <<-SQL
-         ALTER TABLE licences ADD FOREIGN KEY (research_effort_id) REFERENCES research_efforts(id)
-				SQL
+         'ALTER TABLE licences ADD FOREIGN KEY (research_effort_id) REFERENCES research_efforts(id)'
 				execute <<-SQL1
           ALTER TABLE licences
-          ADD CONSTRAINT number_type_limit
-          CHECK (LENGTH(number) > 0 AND LENGTH(number) < 16 AND LENGTH(type) > 0 AND LENGTH(type) < 32);
+          ADD CONSTRAINT number_limit
+          CHECK (LENGTH(number) > 0 AND LENGTH(number) < 16);
         SQL1
+				execute <<-SQL
+          ALTER TABLE licences
+          ADD CONSTRAINT type_limit
+          CHECK (LENGTH(type) > 0 AND LENGTH(type) < 32);
+        SQL
       end
       dir.down do
-        execute <<-SQL1
-          ALTER TABLE licences
-          DROP CONSTRAINT number_type_limit
-        SQL1
       end
     end
   end

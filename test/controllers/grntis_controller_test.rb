@@ -18,7 +18,7 @@ class GrntisControllerTest < ActionController::TestCase
 
   test "should create grnti" do
     assert_difference('Grnti.count') do
-      post :create, grnti: { creator_data: @grnti.creator_data, creator_login: @grnti.creator_login, grnti: @grnti.grnti, name: @grnti.name }
+      post :create, grnti: { grnti: @grnti.grnti, name: @grnti.name }
     end
 
     assert_redirected_to grnti_path(assigns(:grnti))
@@ -35,7 +35,7 @@ class GrntisControllerTest < ActionController::TestCase
   end
 
   test "should update grnti" do
-    patch :update, id: @grnti, grnti: { creator_data: @grnti.creator_data, creator_login: @grnti.creator_login, grnti: @grnti.grnti, name: @grnti.name }
+    patch :update, id: @grnti, grnti: {grnti: @grnti.grnti, name: @grnti.name }
     assert_redirected_to grnti_path(assigns(:grnti))
   end
 

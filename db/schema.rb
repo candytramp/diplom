@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20141014103700) do
     t.text     "city"
     t.date     "start"
     t.date     "finish"
-    t.integer  "year"
+    t.integer  "year",          null: false
     t.text     "ctype",         null: false
     t.string   "creator_login"
     t.text     "creator_data"
@@ -62,10 +62,8 @@ ActiveRecord::Schema.define(version: 20141014103700) do
   add_index "documents", ["owner_id", "owner_type"], name: "index_documents_on_owner_id_and_owner_type", using: :btree
 
   create_table "fields", force: true do |t|
-    t.text     "name",                    null: false
-    t.string   "code",          limit: 8, null: false
-    t.string   "creator_login"
-    t.text     "creator_data"
+    t.text     "name",                 null: false
+    t.string   "code",       limit: 8, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,10 +71,8 @@ ActiveRecord::Schema.define(version: 20141014103700) do
   add_index "fields", ["code"], name: "index_fields_on_code", unique: true, using: :btree
 
   create_table "grntis", force: true do |t|
-    t.string   "grnti",         limit: 8, null: false
-    t.text     "name",                    null: false
-    t.string   "creator_login"
-    t.text     "creator_data"
+    t.string   "grnti",      limit: 8, null: false
+    t.text     "name",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -85,7 +81,7 @@ ActiveRecord::Schema.define(version: 20141014103700) do
 
   create_table "licences", force: true do |t|
     t.string   "number",             limit: 16, null: false
-    t.date     "reg_date"
+    t.date     "reg_date",                      null: false
     t.string   "type",               limit: 32, null: false
     t.text     "name",                          null: false
     t.date     "expiration_date"
@@ -106,9 +102,7 @@ ActiveRecord::Schema.define(version: 20141014103700) do
   add_index "licences", ["research_effort_id"], name: "index_licences_on_research_effort_id", using: :btree
 
   create_table "nir_types", force: true do |t|
-    t.string   "name",          limit: 30, null: false
-    t.string   "creator_login"
-    t.text     "creator_data"
+    t.string   "name",       limit: 30, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -133,13 +127,11 @@ ActiveRecord::Schema.define(version: 20141014103700) do
   add_index "ois_requests", ["research_effort_id"], name: "index_ois_requests_on_research_effort_id", using: :btree
 
   create_table "people", force: true do |t|
-    t.string   "last_name",     limit: 64, null: false
-    t.string   "first_name",    limit: 64, null: false
-    t.string   "second_name",   limit: 64
+    t.string   "last_name",    limit: 64, null: false
+    t.string   "first_name",   limit: 64, null: false
+    t.string   "second_name",  limit: 64
     t.text     "external_ids"
     t.date     "birthday"
-    t.string   "creator_login"
-    t.text     "creator_data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -170,7 +162,7 @@ ActiveRecord::Schema.define(version: 20141014103700) do
     t.integer  "nir_type_id",                                   null: false
     t.integer  "source_id",                                     null: false
     t.integer  "scientific_school_id",                          null: false
-    t.string   "is_nir",                                        null: false
+    t.boolean  "is_nir",                                        null: false
     t.string   "creator_login"
     t.text     "creator_data"
     t.datetime "created_at"
@@ -187,8 +179,6 @@ ActiveRecord::Schema.define(version: 20141014103700) do
 
   create_table "scientific_schools", force: true do |t|
     t.string   "name"
-    t.string   "creator_login"
-    t.text     "creator_data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -197,8 +187,6 @@ ActiveRecord::Schema.define(version: 20141014103700) do
 
   create_table "sources", force: true do |t|
     t.text     "funding_source", null: false
-    t.string   "creator_login"
-    t.text     "creator_data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -206,9 +194,7 @@ ActiveRecord::Schema.define(version: 20141014103700) do
   add_index "sources", ["funding_source"], name: "index_sources_on_funding_source", unique: true, using: :btree
 
   create_table "state_programs", force: true do |t|
-    t.text     "name",          null: false
-    t.string   "creator_login"
-    t.text     "creator_data"
+    t.text     "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -216,9 +202,7 @@ ActiveRecord::Schema.define(version: 20141014103700) do
   add_index "state_programs", ["name"], name: "index_state_programs_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "login",         null: false
-    t.string   "creator_login"
-    t.text     "creator_data"
+    t.string   "login",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

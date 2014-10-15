@@ -2,10 +2,8 @@
 
 one:
   funding_source: MyText
-  creator_login: MyString
-  creator_data: MyText
+
 
 two:
   funding_source: MyText
-  creator_login: MyString
-  creator_data: MyText
+

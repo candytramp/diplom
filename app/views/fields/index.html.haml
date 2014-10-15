@@ -14,8 +14,6 @@
     %tr
       %td= field.name
       %td= field.code
-      %td= field.creator_login
-      %td= field.creator_data
       %td= link_to 'Show', field
       %td= link_to 'Edit', edit_field_path(field)
       %td= link_to 'Destroy', field, :method => :delete, :data => { :confirm => 'Are you sure?' }

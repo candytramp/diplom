@@ -6,7 +6,7 @@ class CreateConferences < ActiveRecord::Migration
       t.text :city
       t.date :start
       t.date :finish
-      t.integer :year
+      t.integer :year, null: false
       t.text :ctype, null: false
       t.string :creator_login
       t.text :creator_data
@@ -27,14 +27,6 @@ class CreateConferences < ActiveRecord::Migration
 				SQL1
 			end
 			dir.down do
-				execute <<-SQL1
-					ALTER TABLE conferences
-          DROP CONSTRAINT ctype_check
-				SQL1
- 				execute <<-SQL
-          ALTER TABLE conferences
-          DROP CONSTRAINT year_limit
-        SQL
 			end
 		end
   end

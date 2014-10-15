@@ -69,6 +69,6 @@ class NirTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nir_type_params
-      params.require(:nir_type).permit(:name, :creator_login, :creator_data)
+      params.require(:nir_type).permit(:name)
     end
 end

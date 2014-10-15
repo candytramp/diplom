@@ -1,4 +1,4 @@
 json.array!(@users) do |user|
-  json.extract! user, :id, :login, :creator_login, :creator_data
+  json.extract! user, :id, :login
   json.url user_url(user, format: :json)
 end
