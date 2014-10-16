@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Article:
+  = @author.article
+%p
+  %b Person:
+  = @author.person
+%p
+  %b Old lastname:
+  = @author.old_lastname
+%p
+  %b Lecturer:
+  = @author.lecturer
+%p
+  %b Senior lecturer:
+  = @author.senior_lecturer
+%p
+  %b Student:
+  = @author.student
+%p
+  %b Postgrad:
+  = @author.postgrad
+%p
+  %b Details:
+  = @author.details
+%p
+  %b Creator login:
+  = @author.creator_login
+%p
+  %b Creator data:
+  = @author.creator_data
+
+= link_to 'Edit', edit_author_path(@author)
+\|
+= link_to 'Back', authors_path
