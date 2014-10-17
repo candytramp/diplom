@@ -4,7 +4,6 @@ class CreateFields < ActiveRecord::Migration
       t.text :name, null: false
       t.string :code, limit: 8, null: false
 			t.index :code, unique: true
-
       t.timestamps
     end
 
@@ -18,10 +17,6 @@ class CreateFields < ActiveRecord::Migration
         SQL
       end
       dir.down do
-        execute <<-SQL
-          ALTER TABLE fields
-          DROP CONSTRAINT code_limit
-        SQL
       end
     end
   end

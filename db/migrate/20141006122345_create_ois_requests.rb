@@ -18,16 +18,17 @@ class CreateOisRequests < ActiveRecord::Migration
       dir.up do
 				execute <<-SQL
           ALTER TABLE ois_requests
-          ADD CONSTRAINT status_object_check
-          CHECK (status IN ('российская', 'международная') AND object IN ('изобретение','полезная модель','промышленный образец','программа для ЭВМ','база данных','товарный знак'));
+          ADD CONSTRAINT status_check
+          CHECK (status IN ('российская', 'международная'));
         SQL
+        execute <<-SQL1
+					ALTER TABLE ois_requests
+          ADD CONSTRAINT object_check
+          CHECK (object IN ('изобретение','полезная модель','промышленный образец','программа для ЭВМ','база данных','товарный знак'));
+				SQL1
         'ALTER TABLE ois_requests ADD FOREIGN KEY (research_effort_id) REFERENCES research_efforts(id)'  
       end
       dir.down do
-				execute <<-SQL
-          ALTER TABLE ois_requests
-          DROP CONSTRAINT status_object_check
-        SQL
       end
     end
   end

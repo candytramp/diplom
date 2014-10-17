@@ -15,7 +15,7 @@ one:
   nir_type_id: 
   source_id: 
   scientific_school_id: 
-  is_nir: MyString
+  is_nir: True
   creator_login: MyString
   creator_data: MyText
 
@@ -34,6 +34,6 @@ two:
   nir_type_id: 
   source_id: 
   scientific_school_id: 
-  is_nir: MyString
+  is_nir: False
   creator_login: MyString
   creator_data: MyText

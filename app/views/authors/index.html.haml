@@ -1,0 +1,37 @@
+%h1 Listing authors
+
+%table
+  %tr
+    %th Article
+    %th Person
+    %th Old lastname
+    %th Lecturer
+    %th Senior lecturer
+    %th Student
+    %th Postgrad
+    %th Details
+    %th Creator login
+    %th Creator data
+    %th
+    %th
+    %th
+
+  - @authors.each do |author|
+    %tr
+      %td= author.article
+      %td= author.person
+      %td= author.old_lastname
+      %td= author.lecturer
+      %td= author.senior_lecturer
+      %td= author.student
+      %td= author.postgrad
+      %td= author.details
+      %td= author.creator_login
+      %td= author.creator_data
+      %td= link_to 'Show', author
+      %td= link_to 'Edit', edit_author_path(author)
+      %td= link_to 'Destroy', author, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Author', new_author_path

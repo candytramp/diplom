@@ -69,6 +69,6 @@ class StateProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def state_program_params
-      params.require(:state_program).permit(:name, :creator_login, :creator_data)
+      params.require(:state_program).permit(:name)
     end
 end

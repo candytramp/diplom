@@ -29,14 +29,6 @@ class CreateArticles < ActiveRecord::Migration
 	    SQL1
       end
       dir.down do
-		    execute <<-SQL1
-          ALTER TABLE articles
-          DROP CONSTRAINT year_max_value
-        SQL1
-        execute <<-SQL
-          ALTER TABLE articles
-          DROP CONSTRAINT start_finish_year_limit
-        SQL
       end
     end
   end

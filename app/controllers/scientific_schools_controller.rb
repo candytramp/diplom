@@ -69,6 +69,6 @@ class ScientificSchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scientific_school_params
-      params.require(:scientific_school).permit(:name, :creator_login, :creator_data)
+      params.require(:scientific_school).permit(:name)
     end
 end

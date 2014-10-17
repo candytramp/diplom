@@ -6,8 +6,7 @@ one:
   second_name: MyString
   external_ids: MyText
   birthday: 2014-10-06
-  creator_login: MyString
-  creator_data: MyText
+
 
 two:
   first_name: MyString
@@ -15,5 +14,4 @@ two:
   second_name: MyString
   external_ids: MyText
   birthday: 2014-10-06
-  creator_login: MyString
-  creator_data: MyText
+

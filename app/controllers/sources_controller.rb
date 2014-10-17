@@ -69,6 +69,6 @@ class SourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def source_params
-      params.require(:source).permit(:funding_source, :creator_login, :creator_data)
+      params.require(:source).permit(:funding_source)
     end
 end

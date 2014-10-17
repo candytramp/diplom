@@ -6,8 +6,6 @@ class CreatePeople < ActiveRecord::Migration
       t.string :second_name, limit: 64
       t.text :external_ids
       t.date :birthday
-      t.string :creator_login
-      t.text :creator_data
 
       t.timestamps
     end

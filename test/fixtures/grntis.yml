@@ -3,11 +3,8 @@
 one:
   name: MyText
   grnti: MyString
-  creator_login: MyString
-  creator_data: MyText
 
 two:
   name: MyText
   grnti: MyString
-  creator_login: MyString
-  creator_data: MyText
+

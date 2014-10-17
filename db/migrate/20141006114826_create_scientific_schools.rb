@@ -3,7 +3,6 @@ class CreateScientificSchools < ActiveRecord::Migration
     create_table :scientific_schools do |t|
       t.string :name
 			t.index :name, unique: true
-
       t.timestamps
     end
   end

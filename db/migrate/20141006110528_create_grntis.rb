@@ -4,7 +4,6 @@ class CreateGrntis < ActiveRecord::Migration
       t.string :grnti, limit: 8, null: false
       t.text :name, null: false
 			t.index :grnti, unique: true
-
       t.timestamps
     end
 
@@ -18,10 +17,6 @@ class CreateGrntis < ActiveRecord::Migration
         SQL
       end
       dir.down do
-        execute <<-SQL
-          ALTER TABLE grntis
-          DROP CONSTRAINT grnti_limit
-        SQL
       end
     end
   end

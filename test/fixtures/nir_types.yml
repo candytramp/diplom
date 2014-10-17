@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  creator_login: MyString
-  creator_data: MyText
+
 
 two:
   name: MyString
-  creator_login: MyString
-  creator_data: MyText
+
