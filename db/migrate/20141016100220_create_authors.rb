@@ -1,16 +1,15 @@
-class CreateAuthors < ActiveRecord::Migration
+class CreateArticleAuthors < ActiveRecord::Migration
   def change
     create_table :authors do |t|
       t.references :article, index: true, null: false
       t.references :person, index: true, null: false
       t.string :old_lastname, limit: 64 #, null: false
-      t.boolean :lecturer
-      t.boolean :senior_lecturer
-      t.boolean :student
-      t.boolean :postgrad
+      t.boolean :is_teacher
+      t.boolean :is_state_teacher
+      t.boolean :is_student
+      t.boolean :is_postgrad
       t.text :details
-      t.string :creator_login
-      t.text :creator_data
+      t.index [:article_id, :person_id], unique: true
 
       t.timestamps
     end
@@ -19,8 +18,6 @@ class CreateAuthors < ActiveRecord::Migration
         'ALTER TABLE authors ADD FOREIGN KEY (article_id) REFERENCES articles(id)'
 				'ALTER TABLE authors ADD FOREIGN KEY (person_id) REFERENCES people(id)'
 			end
-      dir.down do
-      end
     end
   end
 end
