@@ -4,8 +4,6 @@ class CreateFields < ActiveRecord::Migration
       t.text :name, null: false
       t.string :code, limit: 8, null: false
 			t.index :code, unique: true
-      t.string :creator_login
-      t.text :creator_data
 
       t.timestamps
     end
