@@ -42,3 +42,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'paperclip'
 gem 'paper_trail'
+gem 'factory_girl_rails'
+gem 'factory_girl'

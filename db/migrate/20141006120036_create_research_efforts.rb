@@ -31,8 +31,6 @@ class CreateResearchEfforts < ActiveRecord::Migration
 				'ALTER TABLE research_efforts ADD FOREIGN KEY (source_id) REFERENCES sources(id)'  
 				'ALTER TABLE research_efforts ADD FOREIGN KEY (scientific_school_id) REFERENCES scientific_schools(id)'   
       end
-      dir.down do
-      end
     end
   end
 end

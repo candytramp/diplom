@@ -44,11 +44,14 @@ class ResearchEffort < ActiveRecord::Base
 	private
 
 	def convert_nir_value
-			#puts self.is_nir.to_s
-			if self.is_nir!=false && !self.is_nir.nil?
-			  self.is_nir = true 
+			if self.is_nir.present?
+				if self.is_nir!=false && !self.is_nir.nil?
+					self.is_nir = true 
+				else
+					self.is_nir = false
+		    end
 			else
-				self.is_nir = false
-      end	
+				self.errors[:is_nir] << 'Отсутствует поле is_nir'	
+			end
 	end
 end

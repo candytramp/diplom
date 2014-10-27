@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016100220) do
+ActiveRecord::Schema.define(version: 20141021105600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_authors", force: true do |t|
+    t.integer  "article_id",                 null: false
+    t.integer  "person_id",                  null: false
+    t.string   "old_lastname",    limit: 64, null: false
+    t.boolean  "is_teacher"
+    t.boolean  "is_staffteacher"
+    t.boolean  "is_student"
+    t.boolean  "is_postgrad"
+    t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "article_authors", ["article_id", "person_id"], name: "index_article_authors_on_article_id_and_person_id", unique: true, using: :btree
+  add_index "article_authors", ["article_id"], name: "index_article_authors_on_article_id", using: :btree
+  add_index "article_authors", ["person_id"], name: "index_article_authors_on_person_id", using: :btree
 
   create_table "articles", force: true do |t|
     t.text     "name",          null: false
