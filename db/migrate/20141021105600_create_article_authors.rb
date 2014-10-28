@@ -26,3 +26,5 @@ class CreateArticleAuthors < ActiveRecord::Migration
     end
   end
 end
+
+

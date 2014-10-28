@@ -6,8 +6,11 @@ class ArticleAuthorTest < ActiveSupport::TestCase
 		puts person.inspect
 		article = create(:article)
 		puts article.inspect
-		au1 = build(:article_author, :author_with_boolean_fields, article: article, person: person)
-		puts au1.inspect
-		assert au1.save 
+		au2 = ArticleAuthor.new()
+		au2.attributes = {article: article, person: person, is_teacher:	true, is_staffteacher: false,
+   										is_student:	false, is_postgrad:	false, old_lastname:	'Dun'}
+		assert au2.save
+		#puts au2.inspect
+		#assert au1.save 
 	end
 end

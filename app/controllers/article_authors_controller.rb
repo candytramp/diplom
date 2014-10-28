@@ -23,9 +23,35 @@ class ArticleAuthorsController < ApplicationController
 
   # POST /article_authors
   # POST /article_authors.json
+  
   def create
-    @article_author = ArticleAuthor.new(article_author_params)
+    
+		if params[:article_author][:is_teacher] == "1"
+			params[:article_author][:is_teacher] = true
+		else
+			params[:article_author][:is_teacher] = false
+		end
 
+		if params[:article_author][:is_staffteacher] == "1"
+			params[:article_author][:is_staffteacher] = true
+		else
+			params[:article_author][:is_staffteacher] = false
+		end
+
+		if params[:article_author][:is_student] == "1"
+			params[:article_author][:is_student] = true
+		else
+			params[:article_author][:is_student] = false
+		end
+
+		if params[:article_author][:is_postgrad] == "1"
+			params[:article_author][:is_postgrad] = true
+		else
+			params[:article_author][:is_postgrad] = false
+		end
+		#raise article_author_params.inspect
+		@article_author = ArticleAuthor.new(article_author_params)
+		
     respond_to do |format|
       if @article_author.save
         format.html { redirect_to @article_author, notice: 'Article author was successfully created.' }

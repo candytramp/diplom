@@ -42,7 +42,7 @@ class ResearchEffort < ActiveRecord::Base
  	validates :full_value,  numericality: { greater_than: 0, allow_nil: false }
 
 	private
-
+#переделать
 	def convert_nir_value
 			if self.is_nir.present?
 				if self.is_nir!=false && !self.is_nir.nil?
