@@ -3,5 +3,7 @@ class Report < ActiveRecord::Base
 	serialize :creator_data
 	belongs_to :articles
 	has_paper_trail
+
+	has_many :documents, :as=> :owner
 	validates :conference_id, presence: true
 end
