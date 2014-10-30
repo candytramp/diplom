@@ -3,12 +3,10 @@ require 'test_helper'
 class ArticleAuthorTest < ActiveSupport::TestCase
 	test "boolean fields" do
 		person = create(:person)
-		puts person.inspect
+		#puts person.inspect
 		article = create(:article)
-		puts article.inspect
-		au2 = ArticleAuthor.new()
-		au2.attributes = {article: article, person: person, is_teacher:	true, is_staffteacher: false,
-   										is_student:	false, is_postgrad:	false, old_lastname:	'Dun'}
+		#puts article.inspect
+		au2 = build(:article_author, :author_with_boolean_fields, article: article, person: person)
 		assert au2.save
 		#puts au2.inspect
 		#assert au1.save 

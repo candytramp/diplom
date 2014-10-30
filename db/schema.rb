@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021105600) do
+ActiveRecord::Schema.define(version: 20141030131949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,19 @@ ActiveRecord::Schema.define(version: 20141021105600) do
     t.datetime "updated_at"
   end
 
+  create_table "diplomas", force: true do |t|
+    t.text     "name",               null: false
+    t.date     "issue_date"
+    t.text     "issue_organization"
+    t.integer  "year",               null: false
+    t.string   "creator_login"
+    t.text     "creator_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "diplomas", ["name"], name: "index_diplomas_on_name", unique: true, using: :btree
+
   create_table "documents", force: true do |t|
     t.text     "description"
     t.integer  "owner_id"
@@ -95,6 +108,33 @@ ActiveRecord::Schema.define(version: 20141021105600) do
   end
 
   add_index "documents", ["owner_id", "owner_type"], name: "index_documents_on_owner_id_and_owner_type", using: :btree
+
+  create_table "exhibitions", force: true do |t|
+    t.text     "name",          null: false
+    t.text     "etype",         null: false
+    t.text     "country"
+    t.text     "city"
+    t.date     "start"
+    t.date     "finish"
+    t.integer  "year",          null: false
+    t.string   "creator_login"
+    t.text     "creator_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "exhibitions", ["name"], name: "index_exhibitions_on_name", unique: true, using: :btree
+
+  create_table "exhibits", force: true do |t|
+    t.text     "name",          null: false
+    t.integer  "year",          null: false
+    t.integer  "exhibition_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "exhibits", ["exhibition_id"], name: "index_exhibits_on_exhibition_id", using: :btree
+  add_index "exhibits", ["name"], name: "index_exhibits_on_name", unique: true, using: :btree
 
   create_table "fields", force: true do |t|
     t.text     "name",                 null: false
@@ -135,6 +175,20 @@ ActiveRecord::Schema.define(version: 20141021105600) do
   end
 
   add_index "licences", ["research_effort_id"], name: "index_licences_on_research_effort_id", using: :btree
+
+  create_table "monographs", force: true do |t|
+    t.string   "isbn",           limit: 32, null: false
+    t.text     "name",                      null: false
+    t.text     "publisher",                 null: false
+    t.integer  "year",                      null: false
+    t.text     "publisher_name"
+    t.integer  "publish_year"
+    t.decimal  "pages",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "monographs", ["name"], name: "index_monographs_on_name", unique: true, using: :btree
 
   create_table "nir_types", force: true do |t|
     t.string   "name",       limit: 30, null: false
@@ -235,6 +289,21 @@ ActiveRecord::Schema.define(version: 20141021105600) do
   end
 
   add_index "state_programs", ["name"], name: "index_state_programs_on_name", unique: true, using: :btree
+
+  create_table "textbooks", force: true do |t|
+    t.string   "isbn",          limit: 32, null: false
+    t.text     "title",                    null: false
+    t.text     "publisher",                null: false
+    t.integer  "year",                     null: false
+    t.text     "grif",                     null: false
+    t.integer  "publish_year"
+    t.decimal  "pages",                    null: false
+    t.text     "textbook_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "textbooks", ["title"], name: "index_textbooks_on_title", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "login",      null: false

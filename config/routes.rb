@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :textbooks
+
+  resources :monographs
+
+  resources :exhibits
+
+  resources :exhibitions
+
+  resources :diplomas
+
   resources :article_authors
 
   resources :users
