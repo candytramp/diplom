@@ -5,5 +5,6 @@ class Exhibition < ActiveRecord::Base
 
 	validates :name, :year, presence: true
 	validates :name, uniqueness: true
+	validates :year, numericality: {less_than_or_equal_to: Date.today.year} 
 	validates :etype, inclusion: {in: ['международная','на базе вуза','региональная','всероссийская', 'другое']}
 end

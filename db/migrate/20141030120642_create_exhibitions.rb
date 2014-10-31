@@ -22,7 +22,11 @@ class CreateExhibitions < ActiveRecord::Migration
           ADD CONSTRAINT etype_check
           CHECK (etype IN ('международная','на базе вуза','региональная','всероссийская', 'другое'));
         SQL
-    
+    		execute <<-SQL1
+          ALTER TABLE exhibitions
+		 		 	ADD CONSTRAINT year_max_value
+		  		CHECK (year <= CAST(EXTRACT(year from now()) as Integer));
+	    	SQL1
       end
     end
   end

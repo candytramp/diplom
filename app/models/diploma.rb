@@ -5,4 +5,5 @@ class Diploma < ActiveRecord::Base
 
 	validates :name, :year, presence: true
 	validates :name, uniqueness: true
+	validates :year, numericality: {less_than_or_equal_to: Date.today.year} 
 end

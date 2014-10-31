@@ -11,7 +11,12 @@ class CreateExhibits < ActiveRecord::Migration
 
 		reversible do |dir|
       dir.up do
-        'ALTER TABLE exhibits ADD FOREIGN KEY (exhibition_id) REFERENCES exhibitions(id)'  
+        'ALTER TABLE exhibits ADD FOREIGN KEY (exhibition_id) REFERENCES exhibitions(id)' 
+				execute <<-SQL
+          ALTER TABLE exhibits
+		 		 	ADD CONSTRAINT year_max_value
+		  		CHECK (year <= CAST(EXTRACT(year from now()) as Integer));
+	    	SQL
       end
     end
   end

@@ -21,7 +21,11 @@ class CreateMonographs < ActiveRecord::Migration
           CHECK (publisher IN ('Зарубежное издательство','Российское издательство: "Высшая школа"',
 								'Российское издательство: вуза (организации)','Российское издательство'));
         SQL
-    
+				execute <<-SQL1
+          ALTER TABLE monographs
+		 		 	ADD CONSTRAINT year_max_value
+		  		CHECK (year <= CAST(EXTRACT(year from now()) as Integer));
+	    	SQL1
       end
     end
   end

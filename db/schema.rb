@@ -48,24 +48,6 @@ ActiveRecord::Schema.define(version: 20141030131949) do
 
   add_index "articles", ["name"], name: "index_articles_on_name", unique: true, using: :btree
 
-  create_table "authors", force: true do |t|
-    t.integer  "article_id",                 null: false
-    t.integer  "person_id",                  null: false
-    t.string   "old_lastname",    limit: 64
-    t.boolean  "lecturer"
-    t.boolean  "senior_lecturer"
-    t.boolean  "student"
-    t.boolean  "postgrad"
-    t.text     "details"
-    t.string   "creator_login"
-    t.text     "creator_data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "authors", ["article_id"], name: "index_authors_on_article_id", using: :btree
-  add_index "authors", ["person_id"], name: "index_authors_on_person_id", using: :btree
-
   create_table "conferences", force: true do |t|
     t.text     "name",          null: false
     t.text     "country"

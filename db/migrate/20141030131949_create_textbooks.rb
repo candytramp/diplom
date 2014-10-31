@@ -32,7 +32,11 @@ class CreateTextbooks < ActiveRecord::Migration
           CHECK (publisher IN ('Зарубежное издательство','Российское издательство: "Высшая школа"',
 								'Российское издательство: вуза (организации)','Российское издательство'));
         SQL2
-    
+ 				execute <<-SQL3
+          ALTER TABLE textbooks
+		 		 	ADD CONSTRAINT year_max_value
+		  		CHECK (year <= CAST(EXTRACT(year from now()) as Integer));
+	    	SQL3
       end
     end
   end

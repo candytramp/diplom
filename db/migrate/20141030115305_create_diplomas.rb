@@ -12,5 +12,14 @@ class CreateDiplomas < ActiveRecord::Migration
 
       t.timestamps
     end
+		reversible do |dir|
+      dir.up do
+				execute <<-SQL
+          ALTER TABLE diplomas
+		 		 	ADD CONSTRAINT year_max_value
+		  		CHECK (year <= CAST(EXTRACT(year from now()) as Integer));
+	    	SQL
+      end
+    end
   end
 end
