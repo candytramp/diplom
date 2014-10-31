@@ -7,7 +7,7 @@ class CreateMonographs < ActiveRecord::Migration
       t.integer :year,   null: false
       t.text :publisher_name
       t.integer :publish_year
-      t.decimal :pages,  null: false #????/precision: 12, scale: 2
+      t.decimal :pages,  null: false, precision: 5, scale: 2
 
 			t.index :name, unique: true
       t.timestamps

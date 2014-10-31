@@ -7,7 +7,7 @@ class CreateTextbooks < ActiveRecord::Migration
       t.integer :year,    null: false
       t.text :grif,       null: false
       t.integer :publish_year
-      t.decimal :pages,   null: false#????/precision: 12, scale: 2
+      t.decimal :pages,   null: false, precision: 5, scale: 2
       t.text :textbook_type
 			t.index :title, unique: true
 

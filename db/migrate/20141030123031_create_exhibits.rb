@@ -5,7 +5,6 @@ class CreateExhibits < ActiveRecord::Migration
       t.integer :year,   null: false
       t.references :exhibition, index: true,   null: false
 
-			t.index :name, unique: true
       t.timestamps
     end
 
