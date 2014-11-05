@@ -8,6 +8,7 @@
     %th Year
     %th Creator login
     %th Creator data
+    %th Reward
     %th
     %th
     %th
@@ -20,6 +21,7 @@
       %td= diploma.year
       %td= diploma.creator_login
       %td= diploma.creator_data
+      %td= diploma.reward
       %td= link_to 'Show', diploma
       %td= link_to 'Edit', edit_diploma_path(diploma)
       %td= link_to 'Destroy', diploma, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -69,6 +69,6 @@ class MonographsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def monograph_params
-      params.require(:monograph).permit(:isbn, :name, :publisher, :year, :publisher_name, :publish_year, :pages)
+      params.require(:monograph).permit(:isbn, :name, :publisher, :publisher_name, :publish_year, :pages)
     end
 end

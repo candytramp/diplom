@@ -10,8 +10,7 @@ class CreateExhibitions < ActiveRecord::Migration
       t.integer :year, 				 null: false
       t.string :creator_login
       t.text :creator_data
-
-			t.index :name, unique: true
+			t.index [:year, :name], unique: true
       t.timestamps
     end
 
@@ -20,7 +19,7 @@ class CreateExhibitions < ActiveRecord::Migration
         execute <<-SQL
           ALTER TABLE exhibitions
           ADD CONSTRAINT etype_check
-          CHECK (etype IN ('международная','на базе вуза','региональная','всероссийская', 'другое'));
+          CHECK (etype IN ('международная','на базе вуза','региональная','всероссийская', 'другая'));
         SQL
     		execute <<-SQL1
           ALTER TABLE exhibitions

@@ -1,5 +1,126 @@
-FactoryGirl.define do 
- factory :textbook do
+FactoryGirl.define do  factory :people_report do
+    report nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+  end
+  factory :people_textbook do
+    textbook nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+  end
+  factory :people_research_effort do
+    research_effort nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+person_value ""
+role "MyText"
+  end
+  factory :request_author do
+    ois_request nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+  end
+  factory :licence_person do
+    licence nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+  end
+  factory :monograph_author do
+    monograph nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+pages 1
+  end
+  factory :exhibit_person do
+    exhibit nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+  end
+  factory :exhibition_person do
+    exhibition nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+  end
+  factory :diploma_person do
+    diploma nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+  end
+  factory :textbook do
+    isbn "MyString"
+title "MyText"
+publisher "MyText"
+grif "MyText"
+publish_year 1
+pages "9.99"
+textbook_type "MyText"
+  end
+  
+=begin factory :monograph do
+    isbn "MyString"
+		name "MyText"
+		publisher "MyText"
+		publisher_name "MyText"
+		publish_year 1
+		pages "9.99"
+  end
+=end
+  factory :diploma do
+    name "MyText"
+		issue_date "2014-11-05"
+		issue_organization "MyText"
+		year 1
+		creator_login "MyString"
+		creator_data "MyText"
+		reward nil
+  end
+ 
+=begin factory :textbook do
 		isbn "MyString"
 		title "MyText"
 		publisher 'Российское издательство: "Высшая школа"'
@@ -9,7 +130,7 @@ FactoryGirl.define do
 		pages "229.99"
 		textbook_type 'учебник'
   end
-
+=end
   trait :txt_with_bad_grif do
 		grif 'bf'
 	end
@@ -64,38 +185,6 @@ FactoryGirl.define do
     is_postgrad			false
 	end
 
-  factory :monograph do
-    isbn "MyString"
-		name "MyText"
-		publisher "MyText"
-		year 1
-		publisher_name "MyText"
-		publish_year 1
-		pages "9.99"
-  end
-  factory :exhibit do
-    name "MyText"
-		year 1
-		exhibition nil
-  end
-  factory :exhibition do
-    name "MyText"
-		etype "MyText"
-		country "MyText"
-		city "MyText"
-		start "2014-10-30"
-		finish "2014-10-30"
-		year 1
-		creator_login "MyString"
-		creator_data "MyText"
-  end
-  factory :diploma do
-    name "MyText"
-		issue_date "2014-10-30"
-		issue_organization "MyText"
-		year 1
-		creator_login "MyString"
-		creator_data "MyText"
-  end
+
 
 end

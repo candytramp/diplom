@@ -18,7 +18,7 @@ class TextbooksControllerTest < ActionController::TestCase
 
   test "should create textbook" do
     assert_difference('Textbook.count') do
-      post :create, textbook: { grif: @textbook.grif, isbn: @textbook.isbn, pages: @textbook.pages, publish_year: @textbook.publish_year, publisher: @textbook.publisher, textbook_type: @textbook.textbook_type, title: @textbook.title, year: @textbook.year }
+      post :create, textbook: { grif: @textbook.grif, isbn: @textbook.isbn, pages: @textbook.pages, publish_year: @textbook.publish_year, publisher: @textbook.publisher, textbook_type: @textbook.textbook_type, title: @textbook.title }
     end
 
     assert_redirected_to textbook_path(assigns(:textbook))
@@ -35,7 +35,7 @@ class TextbooksControllerTest < ActionController::TestCase
   end
 
   test "should update textbook" do
-    patch :update, id: @textbook, textbook: { grif: @textbook.grif, isbn: @textbook.isbn, pages: @textbook.pages, publish_year: @textbook.publish_year, publisher: @textbook.publisher, textbook_type: @textbook.textbook_type, title: @textbook.title, year: @textbook.year }
+    patch :update, id: @textbook, textbook: { grif: @textbook.grif, isbn: @textbook.isbn, pages: @textbook.pages, publish_year: @textbook.publish_year, publisher: @textbook.publisher, textbook_type: @textbook.textbook_type, title: @textbook.title }
     assert_redirected_to textbook_path(assigns(:textbook))
   end
 

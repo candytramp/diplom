@@ -18,7 +18,7 @@ class DiplomasControllerTest < ActionController::TestCase
 
   test "should create diploma" do
     assert_difference('Diploma.count') do
-      post :create, diploma: { creator_data: @diploma.creator_data, creator_login: @diploma.creator_login, issue_date: @diploma.issue_date, issue_organization: @diploma.issue_organization, name: @diploma.name, year: @diploma.year }
+      post :create, diploma: { creator_data: @diploma.creator_data, creator_login: @diploma.creator_login, issue_date: @diploma.issue_date, issue_organization: @diploma.issue_organization, name: @diploma.name, reward_id: @diploma.reward_id, reward_type: @diploma.reward_type, year: @diploma.year }
     end
 
     assert_redirected_to diploma_path(assigns(:diploma))
@@ -35,7 +35,7 @@ class DiplomasControllerTest < ActionController::TestCase
   end
 
   test "should update diploma" do
-    patch :update, id: @diploma, diploma: { creator_data: @diploma.creator_data, creator_login: @diploma.creator_login, issue_date: @diploma.issue_date, issue_organization: @diploma.issue_organization, name: @diploma.name, year: @diploma.year }
+    patch :update, id: @diploma, diploma: { creator_data: @diploma.creator_data, creator_login: @diploma.creator_login, issue_date: @diploma.issue_date, issue_organization: @diploma.issue_organization, name: @diploma.name, reward_id: @diploma.reward_id, reward_type: @diploma.reward_type, year: @diploma.year }
     assert_redirected_to diploma_path(assigns(:diploma))
   end
 

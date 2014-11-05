@@ -18,7 +18,7 @@ class MonographsControllerTest < ActionController::TestCase
 
   test "should create monograph" do
     assert_difference('Monograph.count') do
-      post :create, monograph: { isbn: @monograph.isbn, name: @monograph.name, pages: @monograph.pages, publish_year: @monograph.publish_year, publisher: @monograph.publisher, publisher_name: @monograph.publisher_name, year: @monograph.year }
+      post :create, monograph: { isbn: @monograph.isbn, name: @monograph.name, pages: @monograph.pages, publish_year: @monograph.publish_year, publisher: @monograph.publisher, publisher_name: @monograph.publisher_name }
     end
 
     assert_redirected_to monograph_path(assigns(:monograph))
@@ -35,7 +35,7 @@ class MonographsControllerTest < ActionController::TestCase
   end
 
   test "should update monograph" do
-    patch :update, id: @monograph, monograph: { isbn: @monograph.isbn, name: @monograph.name, pages: @monograph.pages, publish_year: @monograph.publish_year, publisher: @monograph.publisher, publisher_name: @monograph.publisher_name, year: @monograph.year }
+    patch :update, id: @monograph, monograph: { isbn: @monograph.isbn, name: @monograph.name, pages: @monograph.pages, publish_year: @monograph.publish_year, publisher: @monograph.publisher, publisher_name: @monograph.publisher_name }
     assert_redirected_to monograph_path(assigns(:monograph))
   end
 

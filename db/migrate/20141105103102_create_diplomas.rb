@@ -7,8 +7,7 @@ class CreateDiplomas < ActiveRecord::Migration
       t.integer :year, 						null: false
       t.string :creator_login
       t.text :creator_data
-
-			t.index :name, unique: true
+      t.references :reward, polymorphic: true, index: true
 
       t.timestamps
     end
