@@ -1,4 +1,25 @@
-FactoryGirl.define do  factory :people_report do
+FactoryGirl.define do  factory :author_request do
+    ois_request nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+  end
+  factory :author_monograph do
+    monograph nil
+person nil
+old_lastname "MyString"
+is_teacher false
+is_staffteacher false
+is_student false
+is_postgrad false
+details "MyText"
+pages 1
+  end
+  factory :people_report do
     report nil
 person nil
 old_lastname "MyString"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105124950) do
+ActiveRecord::Schema.define(version: 20141106072925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,41 @@ ActiveRecord::Schema.define(version: 20141105124950) do
   end
 
   add_index "articles", ["name"], name: "index_articles_on_name", unique: true, using: :btree
+
+  create_table "author_monographs", force: true do |t|
+    t.integer  "monograph_id",    null: false
+    t.integer  "person_id",       null: false
+    t.string   "old_lastname",    null: false
+    t.boolean  "is_teacher"
+    t.boolean  "is_staffteacher"
+    t.boolean  "is_student"
+    t.boolean  "is_postgrad"
+    t.text     "details"
+    t.integer  "pages",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "author_monographs", ["monograph_id", "person_id"], name: "index_author_monographs_on_monograph_id_and_person_id", unique: true, using: :btree
+  add_index "author_monographs", ["monograph_id"], name: "index_author_monographs_on_monograph_id", using: :btree
+  add_index "author_monographs", ["person_id"], name: "index_author_monographs_on_person_id", using: :btree
+
+  create_table "author_requests", force: true do |t|
+    t.integer  "ois_request_id",  null: false
+    t.integer  "person_id",       null: false
+    t.string   "old_lastname",    null: false
+    t.boolean  "is_teacher"
+    t.boolean  "is_staffteacher"
+    t.boolean  "is_student"
+    t.boolean  "is_postgrad"
+    t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "author_requests", ["ois_request_id", "person_id"], name: "index_author_requests_on_ois_request_id_and_person_id", unique: true, using: :btree
+  add_index "author_requests", ["ois_request_id"], name: "index_author_requests_on_ois_request_id", using: :btree
+  add_index "author_requests", ["person_id"], name: "index_author_requests_on_person_id", using: :btree
 
   create_table "conferences", force: true do |t|
     t.text     "name",          null: false
@@ -227,24 +262,6 @@ ActiveRecord::Schema.define(version: 20141105124950) do
 
   add_index "licences", ["research_effort_id"], name: "index_licences_on_research_effort_id", using: :btree
 
-  create_table "monograph_authors", force: true do |t|
-    t.integer  "monograph_id",    null: false
-    t.integer  "person_id",       null: false
-    t.string   "old_lastname",    null: false
-    t.boolean  "is_teacher"
-    t.boolean  "is_staffteacher"
-    t.boolean  "is_student"
-    t.boolean  "is_postgrad"
-    t.text     "details"
-    t.integer  "pages",           null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "monograph_authors", ["monograph_id", "person_id"], name: "index_monograph_authors_on_monograph_id_and_person_id", unique: true, using: :btree
-  add_index "monograph_authors", ["monograph_id"], name: "index_monograph_authors_on_monograph_id", using: :btree
-  add_index "monograph_authors", ["person_id"], name: "index_monograph_authors_on_person_id", using: :btree
-
   create_table "monographs", force: true do |t|
     t.string   "isbn",           limit: 32,                         null: false
     t.text     "name",                                              null: false
@@ -290,6 +307,59 @@ ActiveRecord::Schema.define(version: 20141105124950) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "people_reports", force: true do |t|
+    t.integer  "report_id",       null: false
+    t.integer  "person_id",       null: false
+    t.string   "old_lastname",    null: false
+    t.boolean  "is_teacher"
+    t.boolean  "is_staffteacher"
+    t.boolean  "is_student"
+    t.boolean  "is_postgrad"
+    t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "people_reports", ["person_id"], name: "index_people_reports_on_person_id", using: :btree
+  add_index "people_reports", ["report_id", "person_id"], name: "index_people_reports_on_report_id_and_person_id", unique: true, using: :btree
+  add_index "people_reports", ["report_id"], name: "index_people_reports_on_report_id", using: :btree
+
+  create_table "people_research_efforts", force: true do |t|
+    t.integer  "research_effort_id", null: false
+    t.integer  "person_id",          null: false
+    t.string   "old_lastname",       null: false
+    t.boolean  "is_teacher"
+    t.boolean  "is_staffteacher"
+    t.boolean  "is_student"
+    t.boolean  "is_postgrad"
+    t.text     "details"
+    t.decimal  "person_value",       null: false
+    t.text     "role",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "people_research_efforts", ["person_id"], name: "index_people_research_efforts_on_person_id", using: :btree
+  add_index "people_research_efforts", ["research_effort_id", "person_id"], name: "effort_person", unique: true, using: :btree
+  add_index "people_research_efforts", ["research_effort_id"], name: "index_people_research_efforts_on_research_effort_id", using: :btree
+
+  create_table "people_textbooks", force: true do |t|
+    t.integer  "textbook_id",     null: false
+    t.integer  "person_id",       null: false
+    t.string   "old_lastname",    null: false
+    t.boolean  "is_teacher"
+    t.boolean  "is_staffteacher"
+    t.boolean  "is_student"
+    t.boolean  "is_postgrad"
+    t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "people_textbooks", ["person_id"], name: "index_people_textbooks_on_person_id", using: :btree
+  add_index "people_textbooks", ["textbook_id", "person_id"], name: "index_people_textbooks_on_textbook_id_and_person_id", unique: true, using: :btree
+  add_index "people_textbooks", ["textbook_id"], name: "index_people_textbooks_on_textbook_id", using: :btree
 
   create_table "reports", force: true do |t|
     t.text     "title"

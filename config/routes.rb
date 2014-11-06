@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
+  resources :author_requests
+
+  resources :author_monographs
+
   resources :people_reports
 
   resources :people_textbooks
 
   resources :people_research_efforts
 
-  resources :request_authors
-
   resources :licence_people
-
-  resources :monograph_authors
 
   resources :exhibit_people
 
