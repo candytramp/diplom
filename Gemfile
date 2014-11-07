@@ -42,5 +42,15 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'paperclip'
 gem 'paper_trail'
-gem 'factory_girl_rails'
-gem 'factory_girl'
+#gem 'factory_girl_rails'
+#gem 'factory_girl'
+
+group :development, :test do
+  gem 'rspec-rails', '3.0.1'
+  gem 'ffaker'
+  gem 'factory_girl_rails'
+  gem 'simplecov', require: false
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
+end
+
