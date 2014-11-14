@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :theses
+
   resources :author_requests
 
   resources :author_monographs
