@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
   resources :conference_people
+
+  resources :theses
 
   resources :author_requests
 

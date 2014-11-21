@@ -33,6 +33,7 @@ class ResearchEffort < ActiveRecord::Base
   belongs_to :scientific_school
 	has_many :documents, :as => :owner
 	has_many :ois_requests
+	has_many :people_research_efforts
 	has_paper_trail
 	validates :name,:state_program_id, :start_date, :finish_date,
 					  :grnti_id, :field_id, :nir_type_id, :source_id, 

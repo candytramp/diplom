@@ -22,6 +22,7 @@ class Licence < ActiveRecord::Base
 	belongs_to :ois_request
 	belongs_to :research_effort
 	has_many :documents, :as => :owner
+	has_many :licence_people
 	has_paper_trail
   #:expiration_date,:req_number,:req_author, :req_object, :req_status, :reg_agency,:req_priority, :support
 	validates :support, inclusion: {in: %w(патент, поддержка патента), allow_blank: true}
