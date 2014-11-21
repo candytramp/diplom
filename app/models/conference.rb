@@ -1,5 +1,6 @@
 class Conference < ActiveRecord::Base
 	has_many :reports
+	has_many :conference_people
 	serialize :creator_data
 	has_paper_trail
 	has_many :diplomas, :as=> :reward
