@@ -2,25 +2,29 @@
 %html(lang = "ru")
   %head
     %meta(charset = "utf-8")
+    %meta{name: 'viewport', content: "width=device-width, initial-scale=1.0"}
     %title МГИУ
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
     .navbar.navbar-default
-      .navbar-header
-        %span.navbar-brand
-          МГИУ
       .container
+        .navbar-header
+          -#%span.navbar-brand
+          МГИУ
+     
         %ul.nav.navbar-nav
           = render 'layouts/topbar'
         %ul.nav.navbar-nav.navbar-right
           %li.navbar-brand
             = @current_user
           %li= link_to('Выйти', :controller => :application, :action => :logout)
-      .container
-        .row= render 'layouts/messages'
-        .row= yield
-        %footer
-          %p= copyrights
+    .container
+      = render 'layouts/messages'
+      = yield
+  %footer
+    .container
+      %p
+        = copyrights
 
