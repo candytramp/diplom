@@ -279,24 +279,6 @@ ActiveRecord::Schema.define(version: 20141121115200) do
 
   add_index "licences", ["research_effort_id"], name: "index_licences_on_research_effort_id", using: :btree
 
-  create_table "monograph_authors", force: true do |t|
-    t.integer  "monograph_id",    null: false
-    t.integer  "person_id",       null: false
-    t.string   "old_lastname",    null: false
-    t.boolean  "is_teacher"
-    t.boolean  "is_staffteacher"
-    t.boolean  "is_student"
-    t.boolean  "is_postgrad"
-    t.text     "details"
-    t.integer  "pages",           null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "monograph_authors", ["monograph_id", "person_id"], name: "index_monograph_authors_on_monograph_id_and_person_id", unique: true, using: :btree
-  add_index "monograph_authors", ["monograph_id"], name: "index_monograph_authors_on_monograph_id", using: :btree
-  add_index "monograph_authors", ["person_id"], name: "index_monograph_authors_on_person_id", using: :btree
-
   create_table "monographs", force: true do |t|
     t.string   "isbn",           limit: 32,                         null: false
     t.text     "name",                                              null: false
@@ -406,23 +388,6 @@ ActiveRecord::Schema.define(version: 20141121115200) do
   end
 
   add_index "reports", ["conference_id"], name: "index_reports_on_conference_id", using: :btree
-
-  create_table "request_authors", force: true do |t|
-    t.integer  "ois_request_id",  null: false
-    t.integer  "person_id",       null: false
-    t.string   "old_lastname",    null: false
-    t.boolean  "is_teacher"
-    t.boolean  "is_staffteacher"
-    t.boolean  "is_student"
-    t.boolean  "is_postgrad"
-    t.text     "details"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "request_authors", ["ois_request_id", "person_id"], name: "index_request_authors_on_ois_request_id_and_person_id", unique: true, using: :btree
-  add_index "request_authors", ["ois_request_id"], name: "index_request_authors_on_ois_request_id", using: :btree
-  add_index "request_authors", ["person_id"], name: "index_request_authors_on_person_id", using: :btree
 
   create_table "research_efforts", force: true do |t|
     t.text     "name",                                          null: false

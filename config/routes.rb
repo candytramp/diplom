@@ -118,4 +118,9 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  get "application/logout"
+  
+  root :to => "people#index"
+
 end
