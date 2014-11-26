@@ -1,2 +1,12 @@
-%li
-  qq
+.navbar.navbar-default
+  .container
+    .navbar-header.navbar-brand
+      %span
+        =link_to 'МГИУ', root_path
+    %ul.nav.navbar-nav
+      %li.span.navbar-brand
+        qq
+    %ul.nav.navbar-nav.navbar-right.navbar-brand
+      %li=link_to @current_user
+      %li=link_to('Выйти', :controller => :application, :action => :logout)
+   

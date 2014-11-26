@@ -8,18 +8,8 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    .navbar.navbar-default
-      .container
-        .navbar-header
-          -#%span.navbar-brand
-          МГИУ
-     
-        %ul.nav.navbar-nav
-          = render 'layouts/topbar'
-        %ul.nav.navbar-nav.navbar-right
-          %li.navbar-brand
-            = @current_user
-          %li= link_to('Выйти', :controller => :application, :action => :logout)
+    = render 'layouts/topbar'  
+    = render 'layouts/main'
     .container
       = render 'layouts/messages'
       = yield
