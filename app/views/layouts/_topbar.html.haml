@@ -1,2 +1,11 @@
-%li
-  qq
+- menu(@current_user, @current_role).each do |k, v|
+  - if v.has_key?(:controller)
+    %li= link_to(k, v)
+  - else
+    %li.dropdown
+      = link_to('#', {class: 'dropdown-toggle', 'data-toggle' => 'dropdown', role: 'button', 'aria-expanded' => false}) do
+        = k
+        %span.caret    
+      %ul.dropdown-menu{role: :menu}
+        - v.each do |k2, v2|
+          %li= link_to(k2, v2) 
