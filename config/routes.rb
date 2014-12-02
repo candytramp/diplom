@@ -119,7 +119,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  get "application/logout"
+  get  "application/logout"
   
   root :to => "people#index"
 
