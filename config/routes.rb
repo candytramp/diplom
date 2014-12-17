@@ -120,7 +120,7 @@ Rails.application.routes.draw do
   #   end
   
   get  "application/logout"
-  
+  get  "application/change_role"
   root :to => "people#index"
 
 end

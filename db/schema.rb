@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121115200) do
+ActiveRecord::Schema.define(version: 20141217105447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -418,6 +418,18 @@ ActiveRecord::Schema.define(version: 20141121115200) do
   add_index "research_efforts", ["scientific_school_id"], name: "index_research_efforts_on_scientific_school_id", using: :btree
   add_index "research_efforts", ["source_id"], name: "index_research_efforts_on_source_id", using: :btree
   add_index "research_efforts", ["state_program_id"], name: "index_research_efforts_on_state_program_id", using: :btree
+
+  create_table "role_users", force: true do |t|
+    t.integer  "user_id",       null: false
+    t.integer  "role_id",       null: false
+    t.integer  "department_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "role_users", ["user_id", "role_id", "department_id"], name: "index_role_users_on_user_id_and_role_id_and_department_id", unique: true, using: :btree
+  add_index "role_users", ["user_id", "role_id"], name: "index_role_users_on_user_id_and_role_id", unique: true, where: "(department_id IS NULL)", using: :btree
+  add_index "role_users", ["user_id"], name: "index_role_users_on_user_id", using: :btree
 
   create_table "scientific_schools", force: true do |t|
     t.string   "name"

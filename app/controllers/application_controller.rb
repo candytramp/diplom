@@ -23,19 +23,32 @@ class ApplicationController < ActionController::Base
         :bad_controller_name => controller_name)
     else
       @current_user = session[:cas_user]
-#     @current_user_object = User.where(
-#        :login => @current_user).includes(:roles).first
+      RoleUser # FIXME: write scope in model
+      @current_user_object = User.where(
+        :login => @current_user).includes(:role_users).first
       unless check_ctr_auth()
 #      redirect_to(:controller => :roles, :action => :access_denied,
 #        :bad_action_name => action_name,
 #        :bad_controller_name => controller_name)
         raise 'qq'
       end
+      if session[:role_id]
+        @current_user_object.current_role = RoleUser.create_from_session(session)
+      end
     end
   end
 
   def logout
     CASClient::Frameworks::Rails::Filter.logout(self)
+  end
+
+  def change_role
+    role = RoleUser.find(params[:id])
+    unless role.nil?
+      @current_user_object.current_role = role
+      @current_user_object.current_role.store_to_session(session)
+    end
+    redirect_to :root
   end
 
   private
