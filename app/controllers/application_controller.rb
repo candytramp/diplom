@@ -23,10 +23,8 @@ class ApplicationController < ActionController::Base
         :bad_controller_name => controller_name)
     else
       @current_user = session[:cas_user]
-      #RoleUser # FIXME: write scope in model
-      @current_user_object = User.where(
-        :login => @current_user).roles_join.first
-#        :login => @current_user).includes(:role_users).first
+			puts "#{@current_user}"
+      @current_user_object = User.where(:login => @current_user).roles_join.first
       unless check_ctr_auth()
 #      redirect_to(:controller => :roles, :action => :access_denied,
 #        :bad_action_name => action_name,

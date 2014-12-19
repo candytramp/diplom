@@ -46,8 +46,8 @@ gem 'paper_trail'
 #gem 'factory_girl_rails'
 #gem 'factory_girl'
 
-#gem 'rubycas-client-msiu'
-gem 'rubycas-client'
+gem 'rubycas-client-msiu'
+#gem 'rubycas-client'
 group :development, :test do
   gem 'rspec-rails', '3.0.1'
   gem 'ffaker'

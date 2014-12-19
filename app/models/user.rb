@@ -2,12 +2,12 @@ class User < ActiveRecord::Base
 	belongs_to :person
 	has_many :role_users
 	has_paper_trail
-	validates :login, presence: true
+	validates :login, presence: true, uniqueness: true
 	
 	scope :roles_join,->{includes(:role_users)}
 
 	def default_role
-		role_users.min_by { |ur| ur.role_id }
+		role_users.min_by { |ur| ur.role.priority }
 	end
 
 	def current_role
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
 	def current_role=(role)
 		role_permited = role_users.any? do |ur| 
-			ur.role_id == Role::ADMIN || (ur.role_id == role.role_id && ur.department_id == role.department_id) 
+			ur.role.priority == 0 || (ur.role.id == role.id && ur.dept_id == role.dept_id && ur.dept_type == role.dept_type ) 
 		end
 		if role_permited
 			@current_role = role
@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 	end
 end
 
+=begin
 class Role
 	ADMIN = 0
 	CHAIRMAN = 1
@@ -62,4 +63,4 @@ class Inst
 		LIST.find { |i| i.short_name == name }
 	end
 end
-
+=end

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @chair.name
+%p
+  %b Number:
+  = @chair.number
+%p
+  %b Department:
+  = @chair.department
+
+= link_to 'Edit', edit_chair_path(@chair)
+\|
+= link_to 'Back', chairs_path

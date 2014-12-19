@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :role_users
+
+  resources :chairs
+
+  resources :departments
+
+  resources :roles
+
   resources :conference_people
 
   resources :theses

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217105447) do
+ActiveRecord::Schema.define(version: 20141219144457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,16 @@ ActiveRecord::Schema.define(version: 20141217105447) do
   add_index "author_requests", ["ois_request_id"], name: "index_author_requests_on_ois_request_id", using: :btree
   add_index "author_requests", ["person_id"], name: "index_author_requests_on_person_id", using: :btree
 
+  create_table "chairs", force: true do |t|
+    t.text     "name"
+    t.integer  "number"
+    t.integer  "department_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chairs", ["department_id"], name: "index_chairs_on_department_id", using: :btree
+
   create_table "conference_people", force: true do |t|
     t.integer  "conference_id",   null: false
     t.integer  "person_id",       null: false
@@ -110,6 +120,13 @@ ActiveRecord::Schema.define(version: 20141217105447) do
     t.text     "ctype",         null: false
     t.string   "creator_login"
     t.text     "creator_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "departments", force: true do |t|
+    t.text     "full_name",  null: false
+    t.string   "short_name", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -279,6 +296,24 @@ ActiveRecord::Schema.define(version: 20141217105447) do
 
   add_index "licences", ["research_effort_id"], name: "index_licences_on_research_effort_id", using: :btree
 
+  create_table "monograph_authors", force: true do |t|
+    t.integer  "monograph_id",    null: false
+    t.integer  "person_id",       null: false
+    t.string   "old_lastname",    null: false
+    t.boolean  "is_teacher"
+    t.boolean  "is_staffteacher"
+    t.boolean  "is_student"
+    t.boolean  "is_postgrad"
+    t.text     "details"
+    t.integer  "pages",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "monograph_authors", ["monograph_id", "person_id"], name: "index_monograph_authors_on_monograph_id_and_person_id", unique: true, using: :btree
+  add_index "monograph_authors", ["monograph_id"], name: "index_monograph_authors_on_monograph_id", using: :btree
+  add_index "monograph_authors", ["person_id"], name: "index_monograph_authors_on_person_id", using: :btree
+
   create_table "monographs", force: true do |t|
     t.string   "isbn",           limit: 32,                         null: false
     t.text     "name",                                              null: false
@@ -389,6 +424,23 @@ ActiveRecord::Schema.define(version: 20141217105447) do
 
   add_index "reports", ["conference_id"], name: "index_reports_on_conference_id", using: :btree
 
+  create_table "request_authors", force: true do |t|
+    t.integer  "ois_request_id",  null: false
+    t.integer  "person_id",       null: false
+    t.string   "old_lastname",    null: false
+    t.boolean  "is_teacher"
+    t.boolean  "is_staffteacher"
+    t.boolean  "is_student"
+    t.boolean  "is_postgrad"
+    t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "request_authors", ["ois_request_id", "person_id"], name: "index_request_authors_on_ois_request_id_and_person_id", unique: true, using: :btree
+  add_index "request_authors", ["ois_request_id"], name: "index_request_authors_on_ois_request_id", using: :btree
+  add_index "request_authors", ["person_id"], name: "index_request_authors_on_person_id", using: :btree
+
   create_table "research_efforts", force: true do |t|
     t.text     "name",                                          null: false
     t.integer  "state_program_id",                              null: false
@@ -420,16 +472,26 @@ ActiveRecord::Schema.define(version: 20141217105447) do
   add_index "research_efforts", ["state_program_id"], name: "index_research_efforts_on_state_program_id", using: :btree
 
   create_table "role_users", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.integer  "role_id",       null: false
-    t.integer  "department_id"
+    t.integer  "role_id"
+    t.integer  "user_id"
+    t.integer  "dept_id"
+    t.string   "dept_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "role_users", ["user_id", "role_id", "department_id"], name: "index_role_users_on_user_id_and_role_id_and_department_id", unique: true, using: :btree
-  add_index "role_users", ["user_id", "role_id"], name: "index_role_users_on_user_id_and_role_id", unique: true, where: "(department_id IS NULL)", using: :btree
+  add_index "role_users", ["dept_id", "dept_type"], name: "index_role_users_on_dept_id_and_dept_type", using: :btree
+  add_index "role_users", ["role_id"], name: "index_role_users_on_role_id", using: :btree
+  add_index "role_users", ["user_id", "role_id", "dept_id"], name: "index_role_users_on_user_id_and_role_id_and_dept_id", unique: true, using: :btree
+  add_index "role_users", ["user_id", "role_id"], name: "index_role_users_on_user_id_and_role_id", unique: true, where: "(dept_id IS NULL)", using: :btree
   add_index "role_users", ["user_id"], name: "index_role_users_on_user_id", using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "priority",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "scientific_schools", force: true do |t|
     t.string   "name"
@@ -488,6 +550,8 @@ ActiveRecord::Schema.define(version: 20141217105447) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
