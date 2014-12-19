@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3661773880">
+    <data-source source="LOCAL" name="Rails NI: development" uuid="9f5ba9a3-9ed9-4b6e-84c2-a7a99be4fcbf">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:8000/NI_development</jdbc-url>
+      <user-name>olga</user-name>
+      <user-password>dfd3df93df9bdfdddfcfdfd0dfdfdfdcdfd8</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails NI: test" uuid="e13cfee1-9542-4f8b-a4d1-365871875594">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:8000/NI_test</jdbc-url>
+      <user-name>olga</user-name>
+      <user-password>dfd3df93df9bdfdddfcfdfd0dfdfdfdcdfd8</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails NI: production" uuid="9cff2851-95cf-412a-b9f4-351096c588cd">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:8000/NI_production</jdbc-url>
+      <user-name>NI</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe4dfe3dff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

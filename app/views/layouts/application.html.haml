@@ -31,6 +31,7 @@
                   %li= link_to('Выйти', :controller => :application, :action => :logout)
     .container
       .row= render 'layouts/messages'
+      .row= render 'layouts/main'
       .row= yield
       %footer
         %p= copyrights

@@ -10,7 +10,7 @@ class Person < ActiveRecord::Base
 	has_many :people_research_efforts
 	has_many :people_textbooks
 	has_many :author_monographs
-	has_many :authur_requests
+	has_many :author_requests
 	has_many :conference_people
 	has_many :theses
 	has_paper_trail
