@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 	has_paper_trail
 	validates :login, presence: true
 	
+	scope :roles_join,->{includes(:role_users)}
+
 	def default_role
 		role_users.min_by { |ur| ur.role_id }
 	end

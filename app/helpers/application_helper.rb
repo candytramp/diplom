@@ -15,7 +15,7 @@ module ApplicationHelper
                when :success
                  'alert-success'
                when :error, :alert
-                 'alert-error'
+                 'alert-danger'
                end
     classes
   end

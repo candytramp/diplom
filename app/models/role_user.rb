@@ -28,14 +28,4 @@ class RoleUser < ActiveRecord::Base
     else "Гость"
     end
   end
-
-  def store_to_session(session)
-    session[:role_id] = role_id
-    session[:role_department_id] = department_id
-  end
-
-  def self.create_from_session(session)
-    RoleUser.new(role_id: session[:role_id], 
-      department_id: session[:role_department_id])
-  end
 end

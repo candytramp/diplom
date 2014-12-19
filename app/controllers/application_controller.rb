@@ -23,9 +23,10 @@ class ApplicationController < ActionController::Base
         :bad_controller_name => controller_name)
     else
       @current_user = session[:cas_user]
-      RoleUser # FIXME: write scope in model
+      #RoleUser # FIXME: write scope in model
       @current_user_object = User.where(
-        :login => @current_user).includes(:role_users).first
+        :login => @current_user).roles_join.first
+#        :login => @current_user).includes(:role_users).first
       unless check_ctr_auth()
 #      redirect_to(:controller => :roles, :action => :access_denied,
 #        :bad_action_name => action_name,
@@ -33,7 +34,7 @@ class ApplicationController < ActionController::Base
         raise 'qq'
       end
       if session[:role_id]
-        @current_user_object.current_role = RoleUser.create_from_session(session)
+        @current_user_object.current_role = RoleUser.find(session[:role_id])
       end
     end
   end
@@ -44,11 +45,14 @@ class ApplicationController < ActionController::Base
 
   def change_role
     role = RoleUser.find(params[:id])
-    unless role.nil?
-      @current_user_object.current_role = role
-      @current_user_object.current_role.store_to_session(session)
+    @current_user_object.current_role = role
+    if @current_user_object.current_role.id != role.id
+      flash.now[:error]="Недоступная роль для данного пользователя"
+      render(text: "", layout: true)
+    else
+      session[:role_id] = role.id
+      redirect_to :root
     end
-    redirect_to :root
   end
 
   private
