@@ -14,8 +14,8 @@ person_two = Person.create({last_name: 'Bogdanova', first_name: 'Anna', second_n
 user_one = User.create(login: 'soa40')
 user_two = User.create(login: 'bae12')
 
-#person_one.user = user_one
-#person_two.user = user_two
+person_one.user = user_one
+person_two.user = user_two
 
 
 role1 = Role.create({name: 'Admin', priority: 0})
