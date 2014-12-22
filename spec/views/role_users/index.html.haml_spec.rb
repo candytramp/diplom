@@ -4,14 +4,14 @@ RSpec.describe "role_users/index", :type => :view do
   before(:each) do
     assign(:role_users, [
       RoleUser.create!(
-        :role => nil,
         :user => nil,
-        :dept => nil
+        :role => nil,
+        :department => "MyText"
       ),
       RoleUser.create!(
-        :role => nil,
         :user => nil,
-        :dept => nil
+        :role => nil,
+        :department => "MyText"
       )
     ])
   end
@@ -20,6 +20,6 @@ RSpec.describe "role_users/index", :type => :view do
     render
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => "MyText".to_s, :count => 2
   end
 end

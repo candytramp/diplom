@@ -1,14 +1,14 @@
 %p#notice= notice
 
 %p
-  %b Role:
-  = @role_user.role
-%p
   %b User:
   = @role_user.user
 %p
-  %b Dept:
-  = @role_user.dept
+  %b Role:
+  = @role_user.role
+%p
+  %b Department:
+  = @role_user.department
 
 = link_to 'Edit', edit_role_user_path(@role_user)
 \|

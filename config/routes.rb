@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   resources :role_users
 
-  resources :chairs
-
-  resources :departments
-
   resources :roles
+
+  resources :roles do
+    collection do
+      get 'access_denied'
+    end
+  end
 
   resources :conference_people
 
@@ -130,5 +132,5 @@ Rails.application.routes.draw do
   get  "application/logout"
   get  "application/change_role"
   root :to => "people#index"
-
+  #get  'roles/access_denied' => 'roles#access_denied'
 end

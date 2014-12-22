@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	belongs_to :person
-	has_many :role_users
+	has_many :role_users, dependent: :destroy
 	has_paper_trail
 	validates :login, presence: true, uniqueness: true
 	

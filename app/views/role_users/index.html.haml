@@ -2,18 +2,18 @@
 
 %table
   %tr
-    %th Role
     %th User
-    %th Dept
+    %th Role
+    %th Department
     %th
     %th
     %th
 
   - @role_users.each do |role_user|
     %tr
-      %td= role_user.role
       %td= role_user.user
-      %td= role_user.dept
+      %td= role_user.role
+      %td= role_user.department
       %td= link_to 'Show', role_user
       %td= link_to 'Edit', edit_role_user_path(role_user)
       %td= link_to 'Destroy', role_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
