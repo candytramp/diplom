@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
         :bad_controller_name => controller_name)
     else
       @current_user = session[:cas_user]
+      puts @current_user
       @current_user_object = User.where(:login => @current_user).roles_join.first
       #3if @current_user_object.nil?
       # flash.now[:error]="Unregistrated user!"
