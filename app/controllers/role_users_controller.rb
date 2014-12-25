@@ -4,7 +4,7 @@ class RoleUsersController < ApplicationController
   # GET /role_users
   # GET /role_users.json
   def index
-    @role_users = RoleUser.all
+    @role_users = RoleUser.joins(:role, :user).all
   end
 
   # GET /role_users/1

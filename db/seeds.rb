@@ -19,7 +19,7 @@ person_two.user = user_two
 
 
 role1 = Role.create({name: 'Admin', priority: 0})
-role2 = Role.create({name: 'Chairman', priority: 1})
+role2 = Role.create({name: 'HeadOfDept', priority: 1})
 role3 = Role.create({name: 'Secretary', priority: 2})
 role4 = Role.create({name: 'Ozis', priority: 3})
 role5 = Role.create({name: 'Nis', priority: 4})
@@ -40,8 +40,9 @@ dep7 = Department.create({short_name: "ИДО", full_name: "Институт д�
 chair  = {name: 'ИВЦ', number: 11}
 depart = {sname: 'СГТИ', fname: 'Институт социальных и гуманитарных технологий'}
 role_one = RoleUser.create({user: user_one, role: role1})
-role_two = RoleUser.create({user: user_one, role: role3, department: {kaf: [chair]} })
-role_three = RoleUser.create({user: user_two, role: role6, department: {inst: [depart]} })
+role_two = RoleUser.create({user: user_one, role: role3, department: {dept: chair, inst: depart }})
+role_three = RoleUser.create({user: user_two, role: role6, department: {inst: depart} })
+
 
 
 

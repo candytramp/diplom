@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
 	def current_role=(role)
 		role_permited = role_users.any? do |ur| 
-			(self.id == role.user_id) || self.current_role.role.priority == 0
+			(self.id == role.user_id) || self.current_role.role.name == 'Admin'
 		end
 		if role_permited
 			@current_role = role
