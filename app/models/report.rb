@@ -1,7 +1,7 @@
 class Report < ActiveRecord::Base
   belongs_to :conference
 	serialize :creator_data
-	belongs_to :articles
+	belongs_to :article
 	has_paper_trail
 	has_many :people_reports
 	has_many :documents, :as=> :owner
