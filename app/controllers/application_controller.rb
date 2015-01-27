@@ -23,17 +23,17 @@ class ApplicationController < ActionController::Base
         :bad_controller_name => controller_name)
     else
       @current_user = session[:cas_user]
-      puts @current_user
+      raise "Lol"
       @current_user_object = User.where(:login => @current_user).roles_join.first
-      #3if @current_user_object.nil?
-      # flash.now[:error]="Unregistrated user!"
-       #logout
-     # end
+      #if @current_user_object.nil?
+         #redirect_to(:controller => :roles, :action => :sign_in)
+      #end
       unless check_ctr_auth()
+        redirect_to(:controller => :roles, :action => :sign_in)
       #redirect_to(:controller => :roles, :action => :access_denied,
         #:bad_action_name => action_name,
        # :bad_controller_name => controller_name)
-        raise 'qq'
+        #raise 'qq'
       end
       if session[:role_id]
         @current_user_object.current_role = RoleUser.find(session[:role_id])
@@ -56,7 +56,6 @@ class ApplicationController < ActionController::Base
       redirect_to :root
     end
   end
-
   private
   def check_ctr_auth()
     return false if @current_user_object.nil?
