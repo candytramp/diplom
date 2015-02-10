@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121115200) do
+ActiveRecord::Schema.define(version: 20141222142225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -275,8 +275,10 @@ ActiveRecord::Schema.define(version: 20141121115200) do
     t.text     "creator_data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "ois_request_id"
   end
 
+  add_index "licences", ["ois_request_id"], name: "index_licences_on_ois_request_id", using: :btree
   add_index "licences", ["research_effort_id"], name: "index_licences_on_research_effort_id", using: :btree
 
   create_table "monographs", force: true do |t|
@@ -385,8 +387,10 @@ ActiveRecord::Schema.define(version: 20141121115200) do
     t.text     "creator_data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "article_id"
   end
 
+  add_index "reports", ["article_id"], name: "index_reports_on_article_id", using: :btree
   add_index "reports", ["conference_id"], name: "index_reports_on_conference_id", using: :btree
 
   create_table "research_efforts", force: true do |t|
@@ -418,6 +422,26 @@ ActiveRecord::Schema.define(version: 20141121115200) do
   add_index "research_efforts", ["scientific_school_id"], name: "index_research_efforts_on_scientific_school_id", using: :btree
   add_index "research_efforts", ["source_id"], name: "index_research_efforts_on_source_id", using: :btree
   add_index "research_efforts", ["state_program_id"], name: "index_research_efforts_on_state_program_id", using: :btree
+
+  create_table "role_users", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "role_id",    null: false
+    t.text     "department"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "role_users", ["role_id"], name: "index_role_users_on_role_id", using: :btree
+  add_index "role_users", ["user_id"], name: "index_role_users_on_user_id", using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "priority",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["name"], name: "index_roles_on_name", unique: true, using: :btree
 
   create_table "scientific_schools", force: true do |t|
     t.string   "name"
@@ -475,7 +499,11 @@ ActiveRecord::Schema.define(version: 20141121115200) do
     t.string   "login",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "person_id"
   end
+
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
+  add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false

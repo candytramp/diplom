@@ -26,8 +26,13 @@
             %li.dropdown
               = link_to('#', {class: 'dropdown-toggle', 'data-toggle' => 'dropdown', role: 'button', 'aria-expanded' => false}) do
                 = @current_user
+                ,
+                = @current_user_object.current_role.to_text
                 %span.caret    
                 %ul.dropdown-menu{role: :menu}
+                  - @current_user_object.role_users.each do |role|
+                    %li= link_to(role.to_text, :controller => :application, :action => :change_role, :id => role.id)
+                  %li.divider
                   %li= link_to('Выйти', :controller => :application, :action => :logout)
     .container
       .row= render 'layouts/messages'

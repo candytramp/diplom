@@ -16,20 +16,20 @@ class CreateResearchEfforts < ActiveRecord::Migration
       t.references :source, index: true, null: false
       t.references :scientific_school, index: true, null: false
       t.boolean :is_nir, null: false
-			t.index :name, unique: true
+      t.index :name, unique: true
       t.string :creator_login
       t.text :creator_data
 
       t.timestamps
     end
-		reversible do |dir|
+    reversible do |dir|
       dir.up do
         'ALTER TABLE research_efforts ADD FOREIGN KEY (state_program_id) REFERENCES state_programs(id)'
-				'ALTER TABLE research_efforts ADD FOREIGN KEY (grnti_id) REFERENCES grntis(id)'
-				'ALTER TABLE research_efforts ADD FOREIGN KEY (field_id) REFERENCES fields(id)'
-				'ALTER TABLE research_efforts ADD FOREIGN KEY (nir_type_id) REFERENCES nir_types(id)'
-				'ALTER TABLE research_efforts ADD FOREIGN KEY (source_id) REFERENCES sources(id)'  
-				'ALTER TABLE research_efforts ADD FOREIGN KEY (scientific_school_id) REFERENCES scientific_schools(id)'   
+        'ALTER TABLE research_efforts ADD FOREIGN KEY (grnti_id) REFERENCES grntis(id)'
+        'ALTER TABLE research_efforts ADD FOREIGN KEY (field_id) REFERENCES fields(id)'
+        'ALTER TABLE research_efforts ADD FOREIGN KEY (nir_type_id) REFERENCES nir_types(id)'
+        'ALTER TABLE research_efforts ADD FOREIGN KEY (source_id) REFERENCES sources(id)'  
+        'ALTER TABLE research_efforts ADD FOREIGN KEY (scientific_school_id) REFERENCES scientific_schools(id)'   
       end
     end
   end

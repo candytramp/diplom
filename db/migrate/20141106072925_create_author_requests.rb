@@ -22,7 +22,7 @@ class CreateAuthorRequests < ActiveRecord::Migration
           CHECK (LENGTH(old_lastname) > 0 AND LENGTH(old_lastname) <= 64 );
        SQL
        'ALTER TABLE author_requests ADD FOREIGN KEY (ois_request_id) REFERENCES ois_requests(id)'
-		 'ALTER TABLE author_requests ADD FOREIGN KEY (person_id) REFERENCES people(id)' 
+		   'ALTER TABLE author_requests ADD FOREIGN KEY (person_id) REFERENCES people(id)' 
       end
     end
   end  

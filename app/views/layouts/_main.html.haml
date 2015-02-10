@@ -1,11 +1,17 @@
 .container 
   .row
     .col-sm-4
-      .div.tile.purple
-        =link_to "ResearcEfforts", research_efforts_path     
+      =link_to  research_efforts_path, class: 'tile purple' do
+        %i.fa.fa-flask.fa-lg
+        %br
+        Research Efforts  
     .col-sm-4
-      .div.tile.green
-        =link_to "Licences", licences_path   
+      =link_to licences_path, class: 'tile green' do
+        %i.fa.fa-file-text.fa-lg
+        %br
+        Licences
     .col-sm-4
-      .div.tile.blue
-        =link_to "OisRequests", ois_requests_path 
+      =link_to ois_requests_path, class: 'tile orange' do 
+        %i.fa.fa-paste.fa-lg
+        %br
+        OisRequests

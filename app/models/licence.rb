@@ -16,7 +16,7 @@ class TypeValidator < ActiveModel::Validator
 end
 
 class Licence < ActiveRecord::Base
-  include StringStrip
+	include StringStrip
 	validates_with TypeValidator
 	serialize :creator_data
 	belongs_to :ois_request
@@ -24,9 +24,9 @@ class Licence < ActiveRecord::Base
 	has_many :documents, :as => :owner
 	has_many :licence_people
 	has_paper_trail
-  #:expiration_date,:req_number,:req_author, :req_object, :req_status, :reg_agency,:req_priority, :support
+	#:expiration_date,:req_number,:req_author, :req_object, :req_status, :reg_agency,:req_priority, :support
 	validates :support, inclusion: {in: %w(патент, поддержка патента), allow_blank: true}
-  validates :number, :type, :name, :reg_date, presence: true
+	validates :number, :type, :name, :reg_date, presence: true
 	validates :number, length: {maximum: 16}
 	validates :type, length: {maximum: 32}
 

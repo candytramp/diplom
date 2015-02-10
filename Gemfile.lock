@@ -30,6 +30,9 @@ GEM
     arel (5.0.1.20140414130214)
     autoprefixer-rails (3.1.2.20141016)
       execjs
+    bootstrap-glyphicons (0.0.1)
+      railties (>= 3.0)
+      sass (>= 3.2)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
@@ -55,6 +58,8 @@ GEM
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
     ffaker (1.25.0)
+    font-awesome-sass (4.2.2)
+      sass (~> 3.2)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -179,11 +184,13 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  bootstrap-glyphicons
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails
   ffaker
+  font-awesome-sass
   haml-rails (>= 0.5.3)
   jbuilder (~> 2.0)
   jquery-rails
