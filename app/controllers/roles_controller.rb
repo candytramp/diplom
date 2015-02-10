@@ -1,6 +1,7 @@
 class RolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :check_app_auth, :only => [:sign_in]
+  skip_before_filter :check_auth, :only => [:sign_in]
   # GET /roles
   # GET /roles.json
   def index
@@ -59,6 +60,10 @@ class RolesController < ApplicationController
       format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def sign_in
+   render :sign_in, layout: nil
   end
 
   private

@@ -2,13 +2,14 @@ Rails.application.routes.draw do
 
   resources :role_users
 
-  resources :roles
+  #resources :roles
 
   resources :roles do
-    collection do
-      get 'access_denied'
-    end
-  end
+		collection do
+			get 'sign_in'
+		end
+	end
+
 
   resources :conference_people
 
@@ -131,6 +132,7 @@ Rails.application.routes.draw do
   
   get  "application/logout"
   get  "application/change_role"
+  # get  "roles/sign_in"
   root :to => "people#index"
   #get  'roles/access_denied' => 'roles#access_denied'
 end
