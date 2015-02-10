@@ -18,7 +18,7 @@
             %span.icon-bar
             %span.icon-bar
           %span.navbar-brand
-            МГИУ
+            = link_to 'МГИУ', root_path, id: 'home_link'
         .collapse.navbar-collapse{:id => 'bs-example-navbar-collapse-1'}    
           %ul.nav.navbar-nav
             = render 'layouts/topbar'
@@ -36,7 +36,6 @@
                   %li= link_to('Выйти', :controller => :application, :action => :logout)
     .container
       .row= render 'layouts/messages'
-      .row= render 'layouts/main'
       .row= yield
       %footer
         %p= copyrights

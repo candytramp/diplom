@@ -19,3 +19,22 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+#home_link:link {
+    background-color: none;
+    text-decoration: none;
+}
+
+#home_link:visited {
+    background-color: none;
+    text-decoration: none;
+}
+
+#home_link:hover {
+    background-color: inherit;
+    text-decoration: none;
+}
+
+#home_link:active {
+    background-color: none;
+    text-decoration: none;
+} 

@@ -3,7 +3,30 @@ $color_red: #AC193D;
 $color_orange: #DC572E;
 $color_green: #00A600;
 $color_blue: #2672EC;
+				
+$color_compl_green1: #62E200;
+$color_compl_green2: #62AA2A;
+$color_compl_green3: #409300;
+$color_compl_green4: #8BF13C;
+$color_compl_green5: #A6F16C;
 
+$color_sec_aquamarine1: #00AE68;
+$color_sec_aquamarine2: #21825B;
+$color_sec_aquamarine3: #007143;
+$color_sec_aquamarine4: #36D695;
+$color_sec_aquamarine5: #60D6A7;
+
+$color_sec_orange1: #FF4C00;
+$color_sec_orange2: #BF5B30;
+$color_sec_orange3: #A63100;
+$color_sec_orange4: #FF7940;
+$color_sec_orange5: #FF9D73;
+
+$color_prim_red1: #E60042;
+$color_prim_red2: #AC2B50;
+$color_prim_red3: #95002B;
+$color_prim_red4: #F23D70;
+$color_prim_red5: #F26D93;
 
 $base_font_size: 14px;
 $base_line_height: 1.5em;
@@ -24,6 +47,9 @@ p, span, a, ul, li, button {
 	line-height: inherit;
 }
 
+a.tile:hover{
+	text-decoration: none;
+}
 strong {
 	font-weight: 600;
 }
@@ -52,7 +78,7 @@ strong {
 		margin-top: 10px;
 	}
   
-  &.purple, &.blue, &.red, &.orange, &.green {
+  &.purple, &.blue, &.red, &.orange, &.green,&.prim_red1 {
     color: #fff;
   }
   
@@ -93,6 +119,13 @@ strong {
 
 		&:hover {
 			background: darken($color_orange, 10%);
+		}	
+  }
+  &.prim_red1 {
+    background: $color_prim_red1;
+    
+    &:hover {
+			background: darken($color_prim_red1, 10%);
 		}	
   }
 }

@@ -133,6 +133,7 @@ Rails.application.routes.draw do
   get  "application/logout"
   get  "application/change_role"
   # get  "roles/sign_in"
-  root :to => "people#index"
+  #root :to => "people#index"
+  root :to => "people#start_layout" 
   #get  'roles/access_denied' => 'roles#access_denied'
 end
