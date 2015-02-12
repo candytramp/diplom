@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def change_role
-    role = RoleUser.find(params[:id])
+    role = RoleUser.find(params[:new_role_id])
     @current_user_object.current_role = role
     if @current_user_object.current_role.id != role.id
       flash.now[:error]="Недоступная роль для данного пользователя"

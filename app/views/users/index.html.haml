@@ -1,10 +1,10 @@
-%h1 Listing users
+%h1 Список пользователей
 
-%table
+%table.table-condensed
   %tr
-    %th Login
-    %th Creator login
-    %th Creator data
+    %th Логин
+    %th Логин создателя роли
+    %th Дополнительные данные о создателе
     %th
     %th
     %th
@@ -12,10 +12,26 @@
   - @users.each do |user|
     %tr
       %td= user.login
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td
+      %td
+      %td= link_to 'Показать', user, class: 'btn btn-info'
+      %td= link_to 'Редактировать', edit_user_path(user), class: 'btn btn-info'
+      %td= link_to 'Удалить', user, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-info'
 
 %br
 
-= link_to 'New User', new_user_path
+
+.row
+  .container-fluid
+    .col-sm-4
+      - @users.each do |user|
+        .thumbnail
+          .caption.center
+            %h5 Логин
+            %p= user.login
+            %h5 Логин создателя
+            %p
+            %h5 Доп. данные о создателе
+            %p
+  
+= link_to 'Новый пользователь', new_user_path, class: 'btn btn-default'

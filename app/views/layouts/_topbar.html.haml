@@ -1,4 +1,4 @@
-- menu(@current_user, @current_role).each do |k, v|
+- menu(@current_user_object).each do |k, v|
   - if v.has_key?(:controller)
     %li= link_to(k, v)
   - else

@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 	def current_role
 		@current_role || default_role
 	end
+	
+	def is_admin?
+		self.current_role.role.name == 'Admin'
+	end
 
 	def current_role=(role)
 		role_permited = role_users.any? do |ur| 

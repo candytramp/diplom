@@ -31,7 +31,7 @@
                 %span.caret    
                 %ul.dropdown-menu{role: :menu}
                   - @current_user_object.role_users.each do |role|
-                    %li= link_to(role.to_text, :controller => :application, :action => :change_role, :id => role.id)
+                    %li= link_to(role.to_text, :controller => :application, :action => :change_role, :new_role_id => role.id)
                   %li.divider
                   %li= link_to('Выйти', :controller => :application, :action => :logout)
     .container

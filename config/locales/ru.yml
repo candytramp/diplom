@@ -295,4 +295,7 @@ ru:
         event: event
         whodunnit: whodunnit
         object: object
-      
+  helpers:
+    label:
+      user:
+        title: 'Customized title'
