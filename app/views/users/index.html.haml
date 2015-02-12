@@ -1,37 +1,18 @@
 %h1 Список пользователей
 
-%table.table-condensed
-  %tr
-    %th Логин
-    %th Логин создателя роли
-    %th Дополнительные данные о создателе
-    %th
-    %th
-    %th
-
-  - @users.each do |user|
-    %tr
-      %td= user.login
-      %td
-      %td
-      %td= link_to 'Показать', user, class: 'btn btn-info'
-      %td= link_to 'Редактировать', edit_user_path(user), class: 'btn btn-info'
-      %td= link_to 'Удалить', user, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-info'
-
-%br
-
-
 .row
-  .container-fluid
-    .col-sm-4
-      - @users.each do |user|
-        .thumbnail
-          .caption.center
-            %h5 Логин
-            %p= user.login
-            %h5 Логин создателя
-            %p
-            %h5 Доп. данные о создателе
-            %p
-  
+  - @users.each do |user|
+    .col-sm-4.col-lg-3
+      .thumbnail
+        .caption
+          %p= 'Логин: ' + user.login
+          %p= 'Роль по умолчанию: ' + user.default_role.to_text
+          = link_to user, class: 'btn btn-info' do
+            %i.fa.fa-eye.fa-lg
+          = link_to edit_user_path(user), class: 'btn btn-warning' do
+            %i.fa.fa-pencil.fa-lg
+          = link_to  user, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger' do
+            %i.fa.fa-close.fa-lg
+%br  
 = link_to 'Новый пользователь', new_user_path, class: 'btn btn-default'
+%br  

@@ -5,9 +5,10 @@
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :login
-    = f.text_field :login
+  .row
+    .col-md-6.col-lg-4
+      .form-group
+        = f.label :login
+        = f.text_field :login, class: 'form-control'
   .actions
-    = f.submit 'Запомнить'
+    = f.submit 'Запомнить', class: 'btn btn-primary'
