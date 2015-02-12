@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.0'
 gem 'rails-i18n', '>= 4.0.2'
 gem 'haml-rails', '>= 0.5.3'
 # Use postgresql as the database for Active Record
@@ -48,8 +48,8 @@ gem "font-awesome-sass"
 #gem 'factory_girl_rails'
 #gem 'factory_girl'
 
-#gem 'rubycas-client-msiu'
-gem 'rubycas-client'
+gem 'rubycas-client-msiu'
+#gem 'rubycas-client'
 group :development, :test do
   gem 'rspec-rails', '3.0.1'
   gem 'ffaker'
