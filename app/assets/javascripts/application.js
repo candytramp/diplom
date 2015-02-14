@@ -15,3 +15,6 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.ru.js
+

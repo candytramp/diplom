@@ -6,20 +6,23 @@
         - @person.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .form-group
     = f.label :first_name
-    = f.text_field :first_name
-  .field
+    = f.text_field :first_name, class: 'form-control'
+  .form-group
     = f.label :last_name
-    = f.text_field :last_name
-  .field
+    = f.text_field :last_name, class: 'form-control'
+  .form-group
     = f.label :second_name
-    = f.text_field :second_name
-  .field
+    = f.text_field :second_name, class: 'form-control'
+  .form-group
     = f.label :external_ids
-    = f.text_area :external_ids
-  .field
+    = f.text_area :external_ids, class: 'form-control'
+  .form-group
     = f.label :birthday
-    = f.date_select :birthday
+    .input-group.date#datepicker2
+      = f.text_field :birthday, class: 'form-control'
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-calendar
   .actions
-    = f.submit 'Save'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

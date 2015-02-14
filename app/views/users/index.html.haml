@@ -2,7 +2,7 @@
 
 .row
   - @users.each do |user|
-    .col-sm-4.col-lg-3
+    .col-lg-3
       .thumbnail
         .caption
           %p= 'Логин: ' + user.login
@@ -15,4 +15,4 @@
             %i.fa.fa-close.fa-lg
 %br  
 = link_to 'Новый пользователь', new_user_path, class: 'btn btn-default'
-%br  
+

@@ -1,22 +1,22 @@
 %p#notice= notice
 
 %p
-  %b First name:
+  %b Имя:
   = @person.first_name
 %p
-  %b Last name:
+  %b Фамилия:
   = @person.last_name
 %p
-  %b Second name:
+  %b Отчество:
   = @person.second_name
 %p
-  %b External ids:
+  %b Внешние идентификаторы:
   = @person.external_ids
 %p
-  %b Birthday:
+  %b День рождения:
   = @person.birthday
 
 
-= link_to 'Edit', edit_person_path(@person)
+= link_to 'Редактировать', edit_person_path(@person), class: 'btn btn-default'
 \|
-= link_to 'Back', people_path
+= link_to 'Вернуться', people_path, class: 'btn btn-default'

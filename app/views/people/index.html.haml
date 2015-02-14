@@ -1,14 +1,12 @@
-%h1 Listing people
+%h1 Список персоналий
 
-%table
+%table.table-condensed
   %tr
-    %th First name
-    %th Last name
-    %th Second name
-    %th External ids
-    %th Birthday
-    %th Creator login
-    %th Creator data
+    %th Имя
+    %th Фамилия
+    %th Отчество
+    %th Внешниее идентификаторы
+    %th День рождения
     %th
     %th
     %th
@@ -20,10 +18,15 @@
       %td= person.second_name
       %td= person.external_ids
       %td= person.birthday
-      %td= link_to 'Show', person
-      %td= link_to 'Edit', edit_person_path(person)
-      %td= link_to 'Destroy', person, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+      %td
+        = link_to person, class: 'btn btn-info' do
+          %i.fa.fa-eye.fa-lg
+      %td
+        = link_to edit_person_path(person), class: 'btn btn-warning' do
+          %i.fa.fa-pencil.fa-lg
+      %td
+        = link_to  person, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger' do
+          %i.fa.fa-close.fa-lg
 %br
 
-= link_to 'New Person', new_person_path
+= link_to 'Новая персона', new_person_path, class: 'btn btn-default'
