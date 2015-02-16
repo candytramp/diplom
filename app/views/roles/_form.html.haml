@@ -5,12 +5,13 @@
       %ul
         - @role.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :priority
-    = f.number_field :priority
+  .row
+    .col-lg-6
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.label :priority
+        = f.number_field :priority, class: 'form-control', in: 0..10 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Сохранить', class: 'btn btn-primary'

@@ -1,23 +1,23 @@
-%h1 Listing role_users
+%h1 Список пар пользователь-роль
 
-%table
+%table.table-condensed
   %tr
-    %th User
-    %th Role
-    %th Department
+    %th Пользователь
+    %th Роль
+    %th Подразделение
     %th
     %th
     %th
 
   - @role_users.each do |role_user|
     %tr
-      %td= role_user.user
-      %td= role_user.role
-      %td= role_user.department
-      %td= link_to 'Show', role_user
-      %td= link_to 'Edit', edit_role_user_path(role_user)
-      %td= link_to 'Destroy', role_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= role_user.user.login
+      %td= role_user.role.name
+      %td= role_user.to_text
+      %td= link_to 'Показать', role_user
+      %td= link_to 'Редактировать', edit_role_user_path(role_user)
+      %td= link_to 'Удалить', role_user, :method => :delete, :data => { :confirm => 'Вы уверены?' }
 
 %br
 
-= link_to 'New Role user', new_role_user_path
+= link_to 'Новая пара', new_role_user_path, class: 'btn btn-default'

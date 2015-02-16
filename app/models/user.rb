@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	validates :login, presence: true, uniqueness: true
 	
 	scope :roles_join,->{joins(:role_users)}
-
+  scope :join_all,->{includes(:person, :role_users => :role)}
 	def default_role
 		role_users.min_by { |ur| ur.role.priority }
 	end

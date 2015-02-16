@@ -17,4 +17,12 @@ class Person < ActiveRecord::Base
 	include StringStrip
 	validates :first_name, :last_name, presence: true, length: {maximum: 64}
 	validates :second_name,  length: {maximum: 64}
+ 
+  def full_name
+    if !self.second_name.nil?
+      self.last_name + ' ' + self.first_name + ' ' + self.second_name
+    else
+      self.last_name + ' ' + self.first_name
+    end
+  end
 end

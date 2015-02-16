@@ -1,9 +1,9 @@
-%h1 Listing roles
+%h1 Список стандартных ролей
 
-%table
+%table.table-condensed
   %tr
-    %th Name
-    %th Priority
+    %th Название
+    %th Приоритет
     %th
     %th
     %th
@@ -12,10 +12,10 @@
     %tr
       %td= role.name
       %td= role.priority
-      %td= link_to 'Show', role
-      %td= link_to 'Edit', edit_role_path(role)
-      %td= link_to 'Destroy', role, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Показать', role
+      %td= link_to 'Редактироавть', edit_role_path(role)
+      %td= link_to 'Удалить', role, :method => :delete, :data => { :confirm => 'Вы уверены?' }
 
 %br
 
-= link_to 'New Role', new_role_path
+= link_to 'Новая роль', new_role_path, class: 'btn btn-default'

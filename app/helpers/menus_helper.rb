@@ -17,10 +17,11 @@ module MenusHelper
         case role.name
         when 'Admin' then
           menu_items.merge!({
-            'Пользователи' => {:controller => :users, :action => :index},
+            'Персоналии' => {:controller => :people, :action => :index},
             'Управление доступом' => {
+              'Пользователи' => {:controller => :users, :action => :index},
               'Назначение ролей' => {:controller => :role_users, :action => :index},
-              'Режимы доступа' => {:controller => :roles, :action => :index}
+              'Режимы доступа' => {:controller => :roles, :action => :index},
             }
           })
         end
