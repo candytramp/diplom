@@ -6,7 +6,10 @@
       .thumbnail
         .caption
           %p= 'Логин: ' + user.login
-          %p= 'Роль по умолчанию: ' + user.default_role.to_text
+          -if  user.default_role.nil?
+            %p Роль по умолчанию: не назначена
+          -else
+            %p= 'Роль по умолчанию: ' + user.default_role.to_text 
           = link_to user, class: 'btn btn-info' do
             %i.fa.fa-eye.fa-lg
           = link_to edit_user_path(user), class: 'btn btn-warning' do

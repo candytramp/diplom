@@ -1,15 +1,15 @@
 %p#notice= notice
 
 %p
-  %b User:
-  = @role_user.user
+  %b Пользователь:
+  = @role_user.user.login
 %p
-  %b Role:
-  = @role_user.role
+  %b Роль:
+  = @role_user.role.name
 %p
-  %b Department:
-  = @role_user.department
+  %b Подразделение:
+  = @role_user.to_text
 
-= link_to 'Edit', edit_role_user_path(@role_user)
+= link_to 'Редактировать', edit_role_user_path(@role_user), class: 'btn btn-default'
 \|
-= link_to 'Back', role_users_path
+= link_to 'Вернуться', role_users_path, class: 'btn btn-default'

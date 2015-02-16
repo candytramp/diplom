@@ -10,5 +10,8 @@
       .form-group
         = f.label :login
         = f.text_field :login, class: 'form-control'
+      .form-group
+        = f.label 'Добавить к персоне'
+        = f.select( "person_id", select_person_options , {include_blank: '---'})
   .actions
     = f.submit 'Запомнить', class: 'btn btn-primary'

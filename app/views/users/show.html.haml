@@ -3,7 +3,15 @@
 %p
   %b Логин:
   = @user.login
-
+%p
+  %b Персона:
+  = @user.person.full_name
+- if !@user.role_users.empty?
+  %p
+    %b Роли:
+    %ul
+      - @user.role_users.each do |r|
+        %li= r.to_text
 
 = link_to 'Редактировать', edit_user_path(@user), class: 'btn btn-default'
 \|

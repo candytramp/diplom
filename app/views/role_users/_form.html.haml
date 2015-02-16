@@ -5,15 +5,16 @@
       %ul
         - @role_user.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :user
-    = f.text_field :user
-  .field
-    = f.label :role
-    = f.text_field :role
-  .field
-    = f.label :department
-    = f.text_area :department
+  .row
+    .col-lg-5
+      .form-group
+        = f.label :user
+        = f.select("user_id", select_user_options, {include_blank: '---'}, class: 'form-control')
+      .form-group
+        = f.label :role
+        = f.select("role_id", select_role_options, {include_blank: '---'}, class: 'form-control')
+      .form-group
+        = f.label :department
+        = f.text_area :department, class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Сохрнить', class: 'btn btn-primary'
