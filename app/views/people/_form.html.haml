@@ -21,7 +21,7 @@
   .form-group
     = f.label :birthday
     .input-group.date#datepicker2
-      = f.text_field :birthday, class: 'form-control'
+      = f.text_field :birthday, class: 'form-control',:value=>(l(@person.birthday,:format=>"%d.%m.%Y") if @person.birthday)
       %span.input-group-addon
         %span.glyphicon.glyphicon-calendar
   .actions

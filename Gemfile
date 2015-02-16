@@ -48,6 +48,7 @@ gem "font-awesome-sass"
 #gem 'factory_girl_rails'
 #gem 'factory_girl'
 gem 'bootstrap-datepicker-rails'
+gem 'momentjs-rails'
 #gem 'rubycas-client-msiu'
 gem 'rubycas-client'
 group :development, :test do
