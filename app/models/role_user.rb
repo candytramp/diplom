@@ -66,4 +66,5 @@ class RoleUser < ActiveRecord::Base
     else "Гость"
     end
   end
+  
 end

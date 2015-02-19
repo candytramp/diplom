@@ -13,8 +13,16 @@
       .form-group
         = f.label :role
         = f.select("role_id", select_role_options, {include_blank: '---'}, class: 'form-control')
-      .form-group
-        = f.label 'INst fname'
-        = f.text_field :department, id: 'fname', class: 'form-control' 
+
+      -#.form-group
+        -#= f.label :department
+        -#= f.text_area :department, class: 'form-control'
+      %fieldset
+        = f.label 'Характеристики'
+        .fields
+          = f.fields_for :department do |dept_fields|
+            = dept_fields.text_field :fname, class: 'form-control'
+            = dept_fields.text_field :sname, class: 'form-control'
+
   .actions
     = f.submit 'Сохрнить', class: 'btn btn-primary'

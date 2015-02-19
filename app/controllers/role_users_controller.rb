@@ -25,7 +25,9 @@ class RoleUsersController < ApplicationController
   # POST /role_users.json
   def create
     @role_user = RoleUser.new(role_user_params)
-    raise params.inspect
+
+    raise params[:role_user][:department].inspect
+
     respond_to do |format|
       if @role_user.save
         format.html { redirect_to @role_user, notice: 'Role user was successfully created.' }
@@ -70,6 +72,6 @@ class RoleUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def role_user_params
-      params.require(:role_user).permit(:user_id, :role_id, :department)
+      params.require(:role_user).permit(:user_id, :role_id, :department=>[:fname, :sname])
     end
 end
