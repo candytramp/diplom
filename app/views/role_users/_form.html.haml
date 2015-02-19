@@ -14,7 +14,7 @@
         = f.label :role
         = f.select("role_id", select_role_options, {include_blank: '---'}, class: 'form-control')
       .form-group
-        = f.label :department
-        = f.text_area :department, class: 'form-control'
+        = f.label 'INst fname'
+        = f.text_field :department, id: 'fname', class: 'form-control' 
   .actions
     = f.submit 'Сохрнить', class: 'btn btn-primary'

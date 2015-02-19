@@ -48,11 +48,8 @@ class RoleUser < ActiveRecord::Base
   validates :user, :role, presence: true
   validates_with DapertmentValidator
   #validates :user, uniqueness: {scope: :role}
-
-  def institute
-
-  end
-
+  
+  accepts_nested_attributes_for :role, :reject_if => :all_blank, allow_destroy: true
   def chair
     return self.department[:dept][:number].to_s + '('+ self.department[:inst][:sname] + ')' if self.department.has_key?(:dept)
     return "#{self.department[:inst][:sname]}"

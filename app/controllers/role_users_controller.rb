@@ -25,7 +25,7 @@ class RoleUsersController < ApplicationController
   # POST /role_users.json
   def create
     @role_user = RoleUser.new(role_user_params)
-
+    raise params.inspect
     respond_to do |format|
       if @role_user.save
         format.html { redirect_to @role_user, notice: 'Role user was successfully created.' }
@@ -60,6 +60,7 @@ class RoleUsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.
