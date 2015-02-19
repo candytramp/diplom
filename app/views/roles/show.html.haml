@@ -1,3 +1,5 @@
+= link_to_back
+= link_to 'Редактировать', edit_role_path(@role), class: 'btn btn-default'
 %p#notice= notice
 
 %p
@@ -7,6 +9,6 @@
   %b Приоритет:
   = @role.priority
 
-= link_to 'Редактировать', edit_role_path(@role), class: 'btn btn-default'
-\|
-= link_to 'Вернуться', roles_path, class: 'btn btn-default'
+
+-#\|
+-#= link_to 'Вернуться', roles_path, class: 'btn btn-default'

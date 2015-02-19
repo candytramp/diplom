@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "article_authors", force: true do |t|
+  create_table "article_authors", force: :cascade do |t|
     t.integer  "article_id",                 null: false
     t.integer  "person_id",                  null: false
     t.string   "old_lastname",    limit: 64, null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "article_authors", ["article_id"], name: "index_article_authors_on_article_id", using: :btree
   add_index "article_authors", ["person_id"], name: "index_article_authors_on_person_id", using: :btree
 
-  create_table "articles", force: true do |t|
+  create_table "articles", force: :cascade do |t|
     t.text     "name",          null: false
     t.text     "source"
     t.integer  "start_page",    null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "articles", ["name"], name: "index_articles_on_name", unique: true, using: :btree
 
-  create_table "author_monographs", force: true do |t|
+  create_table "author_monographs", force: :cascade do |t|
     t.integer  "monograph_id",    null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "author_monographs", ["monograph_id"], name: "index_author_monographs_on_monograph_id", using: :btree
   add_index "author_monographs", ["person_id"], name: "index_author_monographs_on_person_id", using: :btree
 
-  create_table "author_requests", force: true do |t|
+  create_table "author_requests", force: :cascade do |t|
     t.integer  "ois_request_id",  null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "author_requests", ["ois_request_id"], name: "index_author_requests_on_ois_request_id", using: :btree
   add_index "author_requests", ["person_id"], name: "index_author_requests_on_person_id", using: :btree
 
-  create_table "conference_people", force: true do |t|
+  create_table "conference_people", force: :cascade do |t|
     t.integer  "conference_id",   null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "conference_people", ["conference_id"], name: "index_conference_people_on_conference_id", using: :btree
   add_index "conference_people", ["person_id"], name: "index_conference_people_on_person_id", using: :btree
 
-  create_table "conferences", force: true do |t|
+  create_table "conferences", force: :cascade do |t|
     t.text     "name",          null: false
     t.text     "country"
     t.text     "city"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
     t.datetime "updated_at"
   end
 
-  create_table "diploma_people", force: true do |t|
+  create_table "diploma_people", force: :cascade do |t|
     t.integer  "diploma_id",      null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "diploma_people", ["diploma_id"], name: "index_diploma_people_on_diploma_id", using: :btree
   add_index "diploma_people", ["person_id"], name: "index_diploma_people_on_person_id", using: :btree
 
-  create_table "diplomas", force: true do |t|
+  create_table "diplomas", force: :cascade do |t|
     t.text     "name",               null: false
     t.date     "issue_date"
     t.text     "issue_organization"
@@ -144,9 +144,9 @@ ActiveRecord::Schema.define(version: 20141222142225) do
     t.datetime "updated_at"
   end
 
-  add_index "diplomas", ["reward_id", "reward_type"], name: "index_diplomas_on_reward_id_and_reward_type", using: :btree
+  add_index "diplomas", ["reward_type", "reward_id"], name: "index_diplomas_on_reward_type_and_reward_id", using: :btree
 
-  create_table "documents", force: true do |t|
+  create_table "documents", force: :cascade do |t|
     t.text     "description"
     t.integer  "owner_id"
     t.string   "owner_type"
@@ -160,9 +160,9 @@ ActiveRecord::Schema.define(version: 20141222142225) do
     t.datetime "paper_updated_at"
   end
 
-  add_index "documents", ["owner_id", "owner_type"], name: "index_documents_on_owner_id_and_owner_type", using: :btree
+  add_index "documents", ["owner_type", "owner_id"], name: "index_documents_on_owner_type_and_owner_id", using: :btree
 
-  create_table "exhibit_people", force: true do |t|
+  create_table "exhibit_people", force: :cascade do |t|
     t.integer  "exhibit_id",      null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "exhibit_people", ["exhibit_id"], name: "index_exhibit_people_on_exhibit_id", using: :btree
   add_index "exhibit_people", ["person_id"], name: "index_exhibit_people_on_person_id", using: :btree
 
-  create_table "exhibition_people", force: true do |t|
+  create_table "exhibition_people", force: :cascade do |t|
     t.integer  "exhibition_id",   null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -196,7 +196,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "exhibition_people", ["exhibition_id"], name: "index_exhibition_people_on_exhibition_id", using: :btree
   add_index "exhibition_people", ["person_id"], name: "index_exhibition_people_on_person_id", using: :btree
 
-  create_table "exhibitions", force: true do |t|
+  create_table "exhibitions", force: :cascade do |t|
     t.text     "name",          null: false
     t.text     "etype",         null: false
     t.text     "country"
@@ -212,7 +212,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "exhibitions", ["year", "name"], name: "index_exhibitions_on_year_and_name", unique: true, using: :btree
 
-  create_table "exhibits", force: true do |t|
+  create_table "exhibits", force: :cascade do |t|
     t.text     "name",          null: false
     t.integer  "year",          null: false
     t.integer  "exhibition_id", null: false
@@ -222,7 +222,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "exhibits", ["exhibition_id"], name: "index_exhibits_on_exhibition_id", using: :btree
 
-  create_table "fields", force: true do |t|
+  create_table "fields", force: :cascade do |t|
     t.text     "name",                 null: false
     t.string   "code",       limit: 8, null: false
     t.datetime "created_at"
@@ -231,7 +231,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "fields", ["code"], name: "index_fields_on_code", unique: true, using: :btree
 
-  create_table "grntis", force: true do |t|
+  create_table "grntis", force: :cascade do |t|
     t.string   "grnti",      limit: 8, null: false
     t.text     "name",                 null: false
     t.datetime "created_at"
@@ -240,7 +240,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "grntis", ["grnti"], name: "index_grntis_on_grnti", unique: true, using: :btree
 
-  create_table "licence_people", force: true do |t|
+  create_table "licence_people", force: :cascade do |t|
     t.integer  "licence_id",      null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -257,7 +257,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "licence_people", ["licence_id"], name: "index_licence_people_on_licence_id", using: :btree
   add_index "licence_people", ["person_id"], name: "index_licence_people_on_person_id", using: :btree
 
-  create_table "licences", force: true do |t|
+  create_table "licences", force: :cascade do |t|
     t.string   "number",             limit: 16, null: false
     t.date     "reg_date",                      null: false
     t.string   "type",               limit: 32, null: false
@@ -281,7 +281,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "licences", ["ois_request_id"], name: "index_licences_on_ois_request_id", using: :btree
   add_index "licences", ["research_effort_id"], name: "index_licences_on_research_effort_id", using: :btree
 
-  create_table "monographs", force: true do |t|
+  create_table "monographs", force: :cascade do |t|
     t.string   "isbn",           limit: 32,                         null: false
     t.text     "name",                                              null: false
     t.text     "publisher",                                         null: false
@@ -292,7 +292,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
     t.datetime "updated_at"
   end
 
-  create_table "nir_types", force: true do |t|
+  create_table "nir_types", force: :cascade do |t|
     t.string   "name",       limit: 30, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -300,7 +300,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "nir_types", ["name"], name: "index_nir_types_on_name", unique: true, using: :btree
 
-  create_table "ois_requests", force: true do |t|
+  create_table "ois_requests", force: :cascade do |t|
     t.string   "number",                                    null: false
     t.date     "priority",                                  null: false
     t.text     "author",                                    null: false
@@ -317,7 +317,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "ois_requests", ["research_effort_id"], name: "index_ois_requests_on_research_effort_id", using: :btree
 
-  create_table "people", force: true do |t|
+  create_table "people", force: :cascade do |t|
     t.string   "last_name",    limit: 64, null: false
     t.string   "first_name",   limit: 64, null: false
     t.string   "second_name",  limit: 64
@@ -327,7 +327,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
     t.datetime "updated_at"
   end
 
-  create_table "people_reports", force: true do |t|
+  create_table "people_reports", force: :cascade do |t|
     t.integer  "report_id",       null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -344,7 +344,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "people_reports", ["report_id", "person_id"], name: "index_people_reports_on_report_id_and_person_id", unique: true, using: :btree
   add_index "people_reports", ["report_id"], name: "index_people_reports_on_report_id", using: :btree
 
-  create_table "people_research_efforts", force: true do |t|
+  create_table "people_research_efforts", force: :cascade do |t|
     t.integer  "research_effort_id", null: false
     t.integer  "person_id",          null: false
     t.string   "old_lastname",       null: false
@@ -363,7 +363,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "people_research_efforts", ["research_effort_id", "person_id"], name: "effort_person", unique: true, using: :btree
   add_index "people_research_efforts", ["research_effort_id"], name: "index_people_research_efforts_on_research_effort_id", using: :btree
 
-  create_table "people_textbooks", force: true do |t|
+  create_table "people_textbooks", force: :cascade do |t|
     t.integer  "textbook_id",     null: false
     t.integer  "person_id",       null: false
     t.string   "old_lastname",    null: false
@@ -380,7 +380,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "people_textbooks", ["textbook_id", "person_id"], name: "index_people_textbooks_on_textbook_id_and_person_id", unique: true, using: :btree
   add_index "people_textbooks", ["textbook_id"], name: "index_people_textbooks_on_textbook_id", using: :btree
 
-  create_table "reports", force: true do |t|
+  create_table "reports", force: :cascade do |t|
     t.text     "title"
     t.integer  "conference_id", null: false
     t.string   "creator_login"
@@ -393,7 +393,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "reports", ["article_id"], name: "index_reports_on_article_id", using: :btree
   add_index "reports", ["conference_id"], name: "index_reports_on_conference_id", using: :btree
 
-  create_table "research_efforts", force: true do |t|
+  create_table "research_efforts", force: :cascade do |t|
     t.text     "name",                                          null: false
     t.integer  "state_program_id",                              null: false
     t.date     "start_date",                                    null: false
@@ -423,7 +423,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "research_efforts", ["source_id"], name: "index_research_efforts_on_source_id", using: :btree
   add_index "research_efforts", ["state_program_id"], name: "index_research_efforts_on_state_program_id", using: :btree
 
-  create_table "role_users", force: true do |t|
+  create_table "role_users", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "role_id",    null: false
     t.text     "department"
@@ -434,7 +434,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "role_users", ["role_id"], name: "index_role_users_on_role_id", using: :btree
   add_index "role_users", ["user_id"], name: "index_role_users_on_user_id", using: :btree
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "priority",   null: false
     t.datetime "created_at"
@@ -443,7 +443,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "roles", ["name"], name: "index_roles_on_name", unique: true, using: :btree
 
-  create_table "scientific_schools", force: true do |t|
+  create_table "scientific_schools", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -451,7 +451,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "scientific_schools", ["name"], name: "index_scientific_schools_on_name", unique: true, using: :btree
 
-  create_table "sources", force: true do |t|
+  create_table "sources", force: :cascade do |t|
     t.text     "funding_source", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -459,7 +459,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "sources", ["funding_source"], name: "index_sources_on_funding_source", unique: true, using: :btree
 
-  create_table "state_programs", force: true do |t|
+  create_table "state_programs", force: :cascade do |t|
     t.text     "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -467,7 +467,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "state_programs", ["name"], name: "index_state_programs_on_name", unique: true, using: :btree
 
-  create_table "textbooks", force: true do |t|
+  create_table "textbooks", force: :cascade do |t|
     t.string   "isbn",          limit: 32,                         null: false
     t.text     "title",                                            null: false
     t.text     "publisher",                                        null: false
@@ -479,7 +479,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
     t.datetime "updated_at"
   end
 
-  create_table "theses", force: true do |t|
+  create_table "theses", force: :cascade do |t|
     t.integer  "person_id",               null: false
     t.text     "speciality",              null: false
     t.text     "council"
@@ -495,7 +495,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
 
   add_index "theses", ["person_id"], name: "index_theses_on_person_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "login",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -505,7 +505,7 @@ ActiveRecord::Schema.define(version: 20141222142225) do
   add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
 
-  create_table "versions", force: true do |t|
+  create_table "versions", force: :cascade do |t|
     t.string   "item_type",  null: false
     t.integer  "item_id",    null: false
     t.string   "event",      null: false

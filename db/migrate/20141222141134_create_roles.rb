@@ -6,5 +6,15 @@ class CreateRoles < ActiveRecord::Migration
       t.index :name, unique: true
       t.timestamps
     end
+    reversible do |dir|
+      dir.up do
+        # add a CHECK constraint
+        execute <<-SQL
+          ALTER TABLE roles
+          ADD CONSTRAINT priority_limit
+          CHECK (priority >= 0);
+        SQL
+      end
+    end
   end
 end

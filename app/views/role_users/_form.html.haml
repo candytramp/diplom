@@ -21,8 +21,14 @@
         = f.label 'Характеристики'
         .fields
           = f.fields_for :department do |dept_fields|
-            = dept_fields.text_field :fname, class: 'form-control'
+            = f.label 'Полное название Института'
+            = dept_fields.text_field :fname, class: 'form-control', value: set_default_value(fname)
+            = f.label 'Краткое название Института'
             = dept_fields.text_field :sname, class: 'form-control'
-
+            = f.label 'Название кафедры'
+            = dept_fields.text_field :name, class: 'form-control'
+            = f.label 'Номер кафедры'
+            = dept_fields.number_field :number, class: 'form-control', in: 10..1000
+  %br
   .actions
     = f.submit 'Сохрнить', class: 'btn btn-primary'

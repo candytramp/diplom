@@ -25,8 +25,10 @@ class RolesController < ApplicationController
   # POST /roles
   # POST /roles.json
   def create
-    @role = Role.new(role_params)
+    prio = role_params[:priority]
 
+    @role = Role.new(role_params)
+   
     respond_to do |format|
       if @role.save
         format.html { redirect_to @role, notice: 'Role was successfully created.' }

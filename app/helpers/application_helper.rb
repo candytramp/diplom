@@ -19,4 +19,8 @@ module ApplicationHelper
                end
     classes
   end
+
+  def link_to_back
+    link_to(icon("angle-left")+' Назад',:back, class: 'btn btn-default')
+  end
 end

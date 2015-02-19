@@ -1,3 +1,5 @@
+=link_to_back
+= link_to 'Редактировать', edit_person_path(@person), class: 'btn btn-default'
 %p#notice= notice
 
 
@@ -18,6 +20,6 @@
   = l(@person.birthday)
 
 
-= link_to 'Редактировать', edit_person_path(@person), class: 'btn btn-default'
-\|
-= link_to 'Вернуться', people_path, class: 'btn btn-default'
+
+-#\|
+-#= link_to 'Вернуться', people_path, class: 'btn btn-default'

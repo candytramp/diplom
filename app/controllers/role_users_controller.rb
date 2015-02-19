@@ -21,12 +21,19 @@ class RoleUsersController < ApplicationController
   def edit
   end
 
+
+  def set_department(params)
+    inst = {fname: params[:role_user][:department][:fname], sname: params[:role_user][:department][:sname]}
+    dept = {name: params[:role_user][:department][:name], number: params[:role_user][:department][:number]}
+    return  {inst: inst, dept: dept}
+  end
+
   # POST /role_users
   # POST /role_users.json
   def create
     @role_user = RoleUser.new(role_user_params)
-
-    raise params[:role_user][:department].inspect
+    @role_user.department = set_department(params)
+    #raise params[:role_user][:department].inspect
 
     respond_to do |format|
       if @role_user.save
@@ -42,6 +49,7 @@ class RoleUsersController < ApplicationController
   # PATCH/PUT /role_users/1
   # PATCH/PUT /role_users/1.json
   def update
+    @role_user.department = set_department(params)
     respond_to do |format|
       if @role_user.update(role_user_params)
         format.html { redirect_to @role_user, notice: 'Role user was successfully updated.' }
@@ -72,6 +80,6 @@ class RoleUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def role_user_params
-      params.require(:role_user).permit(:user_id, :role_id, :department=>[:fname, :sname])
+      params.require(:role_user).permit(:user_id, :role_id, :department=>[:fname, :sname, :name, :number])
     end
 end
