@@ -22,13 +22,13 @@
         .fields
           = f.fields_for :department do |dept_fields|
             = f.label 'Полное название Института'
-            = dept_fields.text_field :fname, class: 'form-control', value: set_default_value(fname)
+            = dept_fields.text_field :fname, class: 'form-control', value: set_default_value(@role_user.department,:fname)
             = f.label 'Краткое название Института'
-            = dept_fields.text_field :sname, class: 'form-control'
+            = dept_fields.text_field :sname, class: 'form-control', value: set_default_value(@role_user.department,:sname)
             = f.label 'Название кафедры'
-            = dept_fields.text_field :name, class: 'form-control'
+            = dept_fields.text_field :name, class: 'form-control', value: set_default_value(@role_user.department,:name)
             = f.label 'Номер кафедры'
-            = dept_fields.number_field :number, class: 'form-control', in: 10..1000
+            = dept_fields.number_field :number, class: 'form-control', in: 1..900, value: set_default_value(@role_user.department,:number)
   %br
   .actions
     = f.submit 'Сохрнить', class: 'btn btn-primary'

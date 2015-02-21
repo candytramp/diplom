@@ -1,0 +1,19 @@
+.form-group
+  = f.label :user
+  = f.select("user_id", select_user_options, {include_blank: '---'}, class: 'form-control')
+.form-group
+  = f.label :role
+  = f.select("role_id", select_role_options, {include_blank: '---'}, class: 'form-control')
+%fieldset
+  = f.label 'Характеристики'
+    .fields
+      = f.fields_for :department do |dept_fields|
+        = f.label 'Полное название Института'
+        = dept_fields.text_field :fname, class: 'form-control'
+        = f.label 'Краткое название Института'
+        = dept_fields.text_field :sname, class: 'form-control'
+        = f.label 'Название кафедры'
+        = dept_fields.text_field :name, class: 'form-control'
+        = f.label 'Номер кафедры'
+        = dept_fields.number_field :number, class: 'form-control', in: 10..1000
+

@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
 	has_many :role_users, dependent: :destroy
 	has_paper_trail
 	validates :login, presence: true, uniqueness: true
-	
+
+  accepts_nested_attributes_for :role_users, reject_if: :all_blank
+
 	scope :roles_join,->{joins(:role_users)}
   scope :join_all,->{includes(:person, :role_users => :role)}
 	def default_role

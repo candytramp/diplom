@@ -50,8 +50,8 @@ gem "font-awesome-sass"
 
 gem 'bootstrap-datepicker-rails'
 gem 'momentjs-rails'
-gem 'rubycas-client-msiu'
-#gem 'rubycas-client'
+#gem 'rubycas-client-msiu'
+gem 'rubycas-client'
 
 group :development, :test do
   gem 'rspec-rails'

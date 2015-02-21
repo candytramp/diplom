@@ -12,6 +12,27 @@
         = f.text_field :login, class: 'form-control'
       .form-group
         = f.label 'Добавить к персоне'
-        = f.select( "person_id", select_person_options , {include_blank: '---'})
+        = f.select( "person_id", select_person_options , {include_blank: '---'}) 
+    .col-lg-6
+      
+      %fieldset
+        = f.label 'Добавить роль'
+        .fields
+          = f.fields_for(:role_users) do |ru_fields|
+            .form-group
+              = ru_fields.label :role
+              = ru_fields.select("role_id", select_role_options, {include_blank: '---'}, class: 'form-control')
+            %fieldset
+              = ru_fields.label 'Характеристики'
+              .fields
+                = ru_fields.fields_for :department do |dept_fields|
+                  = dept_fields.label 'Полное название Института'
+                  = dept_fields.text_field :fname, class: 'form-control'
+                  = dept_fields.label 'Краткое название Института'
+                  = dept_fields.text_field :sname, class: 'form-control'
+                  = dept_fields.label 'Название кафедры'
+                  = dept_fields.text_field :name, class: 'form-control'
+                  = dept_fields.label 'Номер кафедры'
+                  = dept_fields.number_field :number, class: 'form-control', in: 1..900
   .actions
     = f.submit 'Запомнить', class: 'btn btn-primary'
